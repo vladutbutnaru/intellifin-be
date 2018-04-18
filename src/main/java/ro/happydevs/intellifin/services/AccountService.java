@@ -22,7 +22,7 @@ public class AccountService {
         //test bun bun
         account.setUserId(u.getId());
 
-        logger.info("[Account Service Create] - Called");
+        logger.info("[Account Service Create] - Calledfgjgj");
 
         return accountRepository.create(account);
 

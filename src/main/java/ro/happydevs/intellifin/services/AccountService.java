@@ -19,6 +19,7 @@ public class AccountService {
     public boolean createAccount(Account account, String token) {
         User u = tokenRepository.getUserByToken(token);
 
+        //test
         account.setUserId(u.getId());
 
         logger.info("[Account Service Create] - Called");

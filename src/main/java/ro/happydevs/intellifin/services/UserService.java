@@ -43,10 +43,29 @@ public class UserService {
         return true;
     }
 
+    public boolean deleteUser(int id, String token) {
+
+        User u = tokenRepository.getUserByToken(token);
+
+        logger.info("[User Service Delete] - Called");
+        return userRepository.delete(id);
+    }
+
 
     public User getUserForToken(String token) {
         return tokenRepository.getUserByToken(token);
 
-
     }
+
+    public boolean updateUser(User newUser, String token) {
+        User u = tokenRepository.getUserByToken(token);
+
+        logger.info("[User Service Update] - Called");
+
+        if (newUser.getId() == u.getId())
+            return userRepository.update(newUser);
+        else
+            return false;
+    }
+
 }

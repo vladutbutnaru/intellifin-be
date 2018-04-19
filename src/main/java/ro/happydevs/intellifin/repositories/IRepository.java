@@ -13,7 +13,7 @@ public interface IRepository {
 
     boolean delete(int id);
 
-    boolean update(int id, Object newObject);
+    boolean update(Object newObject, String token);
 
     boolean create(Object object);
 

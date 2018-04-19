@@ -102,7 +102,7 @@ public class NotificationRepository implements IRepository {
     }
 
     @Override
-    public boolean update(int id, Object newObject) {
+    public boolean update(Object newObject, String token) {
         return false;
     }
 

@@ -9,6 +9,8 @@ import ro.happydevs.intellifin.models.Account;
 import ro.happydevs.intellifin.services.AccountService;
 import ro.happydevs.intellifin.services.TokenService;
 
+import java.util.ArrayList;
+
 @RestController
 @CrossOrigin(value = "*")
 @RequestMapping(value = "/rest/accounts")
@@ -23,17 +25,27 @@ public class AccountEndpoints {
                                            @RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
 
-            accountService.createAccount(account, token);
-            return ResponseEntity.ok(account);
+            if (accountService.createAccount(account, token))
+                return ResponseEntity.ok(account);
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
     }
 
+    @RequestMapping(value = "/delete")
+    public ResponseEntity<?> deleteAccount(@RequestHeader("Authentication") String token,
+                                           @RequestParam (value = "id") int id) {
+        if (tokenService.verifyToken(token)) {
+
+                 return ResponseEntity.ok(accountService.deleteAccount(id, token));
+            }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+    }
+
     @RequestMapping(value = "/list")
     public ResponseEntity<?> listAccounts(@RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
-
 
             return ResponseEntity.ok(accountService.getAccountsForUser(token));
         }
@@ -44,13 +56,25 @@ public class AccountEndpoints {
     @RequestMapping(value = "/get")
     public ResponseEntity<?> getAccount(@RequestHeader("Authentication") String token,
                                         @RequestParam(value = "id") int id) {
+
         if (tokenService.verifyToken(token)) {
+            if (accountService.getAccountById(id,token) != null)
+                    return ResponseEntity.ok(accountService.getAccountById(id,token));
+            }
 
-
-            return ResponseEntity.ok(accountService.getAccountById(id));
-        }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
     }
 
+    @RequestMapping(value = "/update")
+    public ResponseEntity<?> updateAccount(@RequestBody Account newAccount,
+                                           @RequestHeader("Authentication") String token) {
+
+        if (tokenService.verifyToken(token)) {
+
+            return ResponseEntity.ok(accountService.updateAccount(newAccount,token));
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+    }
 }

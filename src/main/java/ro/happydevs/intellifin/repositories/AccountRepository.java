@@ -113,7 +113,7 @@ public class AccountRepository implements IRepository {
         Connection con = DBConnection.getConnection();
         try {
 
-            PreparedStatement stmt = con.prepareStatement("DELETE FROM " + CONSTANTS.ACCOUNT_TABLE + " WHERE id = ?");
+            PreparedStatement stmt = con.prepareStatement("UPDATE " + CONSTANTS.ACCOUNT_TABLE + " SET deleted = 1 WHERE id = ?");
             stmt.setInt(1, id);
             stmt.executeUpdate();
 
@@ -130,8 +130,31 @@ public class AccountRepository implements IRepository {
     }
 
     @Override
-    public boolean update(int id, Object newObject) {
+    public boolean update(Object newObject, String token) {return true;}
+
+    public boolean update(Object newObject) {
+        Connection con = DBConnection.getConnection();
+        Account a = ((Account)newObject);
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE " + CONSTANTS.ACCOUNT_TABLE + " SET user_id = ?, name = ?, currency = ?, sold = ?, type = ?, description = ? WHERE id = " + a.getId());
+            ps.setInt(1, a.getUserId());
+            ps.setString(2, a.getName());
+            ps.setInt(3,a.getCurrency());
+            ps.setDouble(4, a.getSold());
+            ps.setInt(5, a.getType());
+            ps.setString(6, a.getDescription());
+
+            ps.executeUpdate();
+            logger.error("[Account Repository Update] - Success");
+            return true;
+        }
+
+        catch(Exception e) {
+            e.printStackTrace();
+            logger.error("[Account Repository Update] - Error");
+        }
         return false;
+
     }
 
     @Override

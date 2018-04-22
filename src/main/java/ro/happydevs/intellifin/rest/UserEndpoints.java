@@ -53,7 +53,6 @@ public class UserEndpoints {
 
         return ResponseEntity.ok(response);
 
-
     }
 
     @RequestMapping(value = "/info")
@@ -65,6 +64,28 @@ public class UserEndpoints {
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
-
     }
+
+    @RequestMapping(value = "/delete")
+    public ResponseEntity<?> deleteUser(@RequestHeader("Authentication") String token,
+                                        @RequestParam (value = "id") int id) {
+        if (tokenService.verifyToken(token)) {
+            return ResponseEntity.ok(userService.deleteUser(id, token));
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+    }
+
+    @RequestMapping(value = "/update")
+    public ResponseEntity<?> updateUser(@RequestBody User newUser,
+                                           @RequestHeader("Authentication") String token) {
+
+        if (tokenService.verifyToken(token)) {
+
+            return ResponseEntity.ok(userService.updateUser(newUser,token));
+        }
+
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+    }
+
 }

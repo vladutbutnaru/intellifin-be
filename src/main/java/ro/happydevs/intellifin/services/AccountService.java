@@ -19,13 +19,26 @@ public class AccountService {
     public boolean createAccount(Account account, String token) {
         User u = tokenRepository.getUserByToken(token);
 
-        //test bun bun
-        account.setUserId(u.getId());
+        logger.info("[Account Service Create] - Called");
 
-        logger.info("[Account Service Create] - Calledfgjgj");
+        if (account.getUserId() == u.getId()) {
+                account.setUserId(u.getId());
+                return accountRepository.create(account); }
 
-        return accountRepository.create(account);
+        return false;
 
+    }
+
+    public boolean deleteAccount(int id, String token) {
+        User u = tokenRepository.getUserByToken(token);
+
+        logger.info("[Account Service Delete] - Called");
+
+        for (int i = 0; i < accountRepository.getAccountsForUserId(u.getId()).size(); i++)
+             if (accountRepository.getAccountsForUserId(u.getId()).get(i).getId() == id)
+                return accountRepository.delete(id);
+
+        return false;
 
     }
 
@@ -37,9 +50,28 @@ public class AccountService {
 
     }
 
-    public Account getAccountById(int accountId) {
-        return (Account) accountRepository.getById(accountId);
+    public Account getAccountById(int accountId, String token) {
+        User u = tokenRepository.getUserByToken(token);
 
+        logger.info("[Account Service GetById] - Called");
+
+        for (int i = 0; i < accountRepository.getAccountsForUserId(u.getId()).size(); i++)
+            if (accountRepository.getAccountsForUserId(u.getId()).get(i).getId() == accountId)
+                return (Account) accountRepository.getById(accountId);
+
+        return null;
+
+    }
+
+    public boolean updateAccount(Account newAccount, String token) {
+        User u = tokenRepository.getUserByToken(token);
+
+        logger.info("[Account Service Update] - Called");
+
+        if (newAccount.getUserId() == u.getId())
+            return accountRepository.update(newAccount);
+        else
+        return false;
     }
 
 }

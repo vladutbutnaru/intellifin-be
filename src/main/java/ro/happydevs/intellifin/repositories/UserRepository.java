@@ -164,12 +164,62 @@ public class UserRepository implements IRepository {
 
     @Override
     public boolean delete(int id) {
+        Connection con = DBConnection.getConnection();
+        try {
+
+            PreparedStatement stmt = con.prepareStatement("UPDATE " + CONSTANTS.USER_TABLE + " SET deleted = 1 WHERE id = ?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+            logger.info("[User Repository] - deleteUser success!");
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error("[User Repository] - deleteUser failed!");
+        }
         return false;
     }
 
     @Override
-    public boolean update(int id, Object newObject) {
+    public boolean update(Object object, String token) {return false;}
+
+    public boolean update(Object newObject) {
+        Connection con = DBConnection.getConnection();
+        User u = ((User)newObject);
+
+        try {
+            PreparedStatement ps = con.prepareStatement("UPDATE " + CONSTANTS.USER_TABLE + " SET email = ?, password = ?, smoker = ?, driver_license = ?, " +
+                    "owns_car = ?, married = ?, number_of_kids = ?, owns_apartment = ?, rent_apartment = ?, city = ?, address = ?, " +
+                    "subscription_type = ?, age = ?, gender = ?, phone_number = ?, birth_date = ? WHERE id = " + u.getId());
+            ps.setString(1, u.getEmail());
+            ps.setString(2, u.getPassword());
+            ps.setInt(3,u.isSmoker()?1:0);
+            ps.setInt(4,u.isDriverLicense()?1:0);
+            ps.setInt(5,u.isOwnsCar()?1:0);
+            ps.setInt(6,u.isMarried()?1:0);
+            ps.setInt(7,u.getNumberOfKids());
+            ps.setInt(8,u.isOwnsApartment()?1:0);
+            ps.setInt(9,u.isRentApartment()?1:0);
+            ps.setInt(10, u.getCity());
+            ps.setString(11, u.getAddress());
+            ps.setInt(12, u.getSubscriptionType());
+            ps.setInt(13,u.getAge());
+            ps.setInt(14,u.getGender());
+            ps.setString(15,u.getPhoneNumber());
+            ps.setDate(16,u.getBirthDate());
+
+            ps.executeUpdate();
+            logger.error("[User Repository Update] - Success");
+            return true;
+        }
+
+        catch(Exception e) {
+            e.printStackTrace();
+            logger.error("[User Repository Update] - Error");
+        }
         return false;
+
     }
 
     @Override

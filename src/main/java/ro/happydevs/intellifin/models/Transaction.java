@@ -10,16 +10,10 @@ public class Transaction extends GenericModel {
     private int recurring;
     private int recurringDays;
     private String tag;
+    // type = expense (0)/ earning (1)
     private int type;
-    private int shopId;
+    private int sourceShopId;
 
-    public int getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
-    }
 
     public double getAmount() {
         return amount;
@@ -83,5 +77,13 @@ public class Transaction extends GenericModel {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getSourceShopId() {
+        return sourceShopId;
+    }
+
+    public void setSourceShopId(int sourceShopId) {
+        this.sourceShopId = sourceShopId;
     }
 }

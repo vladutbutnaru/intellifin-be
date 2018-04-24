@@ -136,13 +136,13 @@ public class AccountRepository implements IRepository {
         Connection con = DBConnection.getConnection();
         Account a = ((Account)newObject);
         try {
-            PreparedStatement ps = con.prepareStatement("UPDATE " + CONSTANTS.ACCOUNT_TABLE + " SET user_id = ?, name = ?, currency = ?, sold = ?, type = ?, description = ? WHERE id = " + a.getId());
-            ps.setInt(1, a.getUserId());
-            ps.setString(2, a.getName());
-            ps.setInt(3,a.getCurrency());
-            ps.setDouble(4, a.getSold());
-            ps.setInt(5, a.getType());
-            ps.setString(6, a.getDescription());
+            PreparedStatement ps = con.prepareStatement("UPDATE " + CONSTANTS.ACCOUNT_TABLE + " SET name = ?, currency = ?, sold = ?, type = ?, description = ? WHERE id = " + a.getId());
+
+            ps.setString(1, a.getName());
+            ps.setInt(2,a.getCurrency());
+            ps.setDouble(3, a.getSold());
+            ps.setInt(4, a.getType());
+            ps.setString(5, a.getDescription());
 
             ps.executeUpdate();
             logger.error("[Account Repository Update] - Success");

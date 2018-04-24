@@ -14,7 +14,7 @@ public class CONSTANTS {
     public static final String CITY_TABLE = "Cities";
     public static final String SHOP_TABLE = "Shops";
     public static final String PRODUCT_TABLE = "Products";
-    public static final String EXPENSE_TABLE = "Expenses";
+    public static final String TRANSACTION_TABLE = "Transactions";
     public static final String EXPENSE_PRODUCTS_TABLE = "Expense_Products";
     public static final String PRODUCT_PRICE_TABLE = "Product_Prices";
     public static final String NOTIFICATION_TABLE = "Notifications";

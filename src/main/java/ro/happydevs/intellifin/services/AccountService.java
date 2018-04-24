@@ -68,9 +68,10 @@ public class AccountService {
 
         logger.info("[Account Service Update] - Called");
 
-        if (newAccount.getUserId() == u.getId())
-            return accountRepository.update(newAccount);
-        else
+        for (int i = 0; i < accountRepository.getAccountsForUserId(u.getId()).size(); i++)
+            if (accountRepository.getAccountsForUserId(u.getId()).get(i).getId() == newAccount.getId())
+                return accountRepository.update(newAccount);
+
         return false;
     }
 

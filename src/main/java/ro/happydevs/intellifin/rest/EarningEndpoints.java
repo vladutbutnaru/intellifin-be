@@ -1,6 +1,5 @@
 package ro.happydevs.intellifin.rest;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,21 +8,19 @@ import ro.happydevs.intellifin.models.Transaction;
 import ro.happydevs.intellifin.services.AccountService;
 import ro.happydevs.intellifin.services.TokenService;
 import ro.happydevs.intellifin.services.TransactionService;
-import ro.happydevs.intellifin.services.UserService;
 
 @RestController
 @CrossOrigin(value = "*")
 @RequestMapping("/rest/transactions")
-public class TransactionEndpoints {
-
+public class EarningEndpoints {
 
     private TransactionService transactionService = new TransactionService();
 
     private TokenService tokenService = new TokenService();
     private AccountService accountService = new AccountService();
 
-    @RequestMapping(value="/expense/add")
-    public ResponseEntity<?> addExpense(
+    @RequestMapping(value="/earning/add")
+    public ResponseEntity<?> addEaerning(
             @RequestHeader("Authentication") String token,
             @RequestBody Transaction transaction
     ){
@@ -43,7 +40,6 @@ public class TransactionEndpoints {
 
 
     }
-
 
 
 }

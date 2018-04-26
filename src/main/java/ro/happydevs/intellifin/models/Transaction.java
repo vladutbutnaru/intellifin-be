@@ -13,6 +13,8 @@ public class Transaction extends GenericModel {
     // type = expense (0)/ earning (1)
     private int type;
     private int sourceShopId;
+    private int carId;
+    private int houseId;
 
 
     public double getAmount() {
@@ -85,5 +87,21 @@ public class Transaction extends GenericModel {
 
     public void setSourceShopId(int sourceShopId) {
         this.sourceShopId = sourceShopId;
+    }
+
+    public int getCarId() {
+        return carId;
+    }
+
+    public void setCarId(int carId) {
+        this.carId = carId;
+    }
+
+    public int getHouseId() {
+        return houseId;
+    }
+
+    public void setHouseId(int houseId) {
+        this.houseId = houseId;
     }
 }

@@ -2,6 +2,7 @@ package ro.happydevs.intellifin.repositories;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ro.happydevs.intellifin.models.Account;
 import ro.happydevs.intellifin.models.Expense;
 import ro.happydevs.intellifin.models.Transaction;
 import ro.happydevs.intellifin.utils.constants.CONSTANTS;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class TransactionRepository implements IRepository {
 
     private static Logger logger = LoggerFactory.getLogger(TransactionRepository.class);
+    private AccountRepository accRep = new AccountRepository();
 
     @Override
     public ArrayList<?> getAll() {
@@ -43,7 +45,9 @@ public class TransactionRepository implements IRepository {
                 t.setTag(rs.getString(8));
                 t.setType(rs.getInt(9));
                 t.setSourceShopId(rs.getInt(10));
-                t.setCreatedAt(rs.getDate(11));
+                t.setCarId(rs.getInt(11));
+                t.setHouseId(rs.getInt(12));
+                t.setCreatedAt(rs.getDate(13));
                 t.setDeleted(false);
 
                 tr.add(t);
@@ -84,7 +88,9 @@ public class TransactionRepository implements IRepository {
                 t.setTag(rs.getString(8));
                 t.setType(rs.getInt(9));
                 t.setSourceShopId(rs.getInt(10));
-                t.setCreatedAt(rs.getDate(11));
+                t.setCarId(rs.getInt(11));
+                t.setHouseId(rs.getInt(12));
+                t.setCreatedAt(rs.getDate(13));
                 t.setDeleted(false);
 
                 tr.add(t);
@@ -126,10 +132,12 @@ public class TransactionRepository implements IRepository {
     public boolean create(Object object) {
        Connection con = DBConnection.getConnection();
        Transaction t = (Transaction) object;
+        Double newSold;
+
        try{
            java.util.Date date = new java.util.Date();
-           PreparedStatement ps = con.prepareStatement("INSERT INTO " + CONSTANTS.TRANSACTION_TABLE + "(amount,currency,user_id,account_id,recurring,recurring_days,tag,type,source_shop_id,created_at,deleted) " +
-                   "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+           PreparedStatement ps = con.prepareStatement("INSERT INTO " + CONSTANTS.TRANSACTION_TABLE + "(amount,currency,user_id,account_id,recurring,recurring_days,tag,type,source_shop_id,car_id,house_id,created_at,deleted) " +
+                   "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
            ps.setDouble(1, t.getAmount());
            ps.setInt(2,t.getCurrency());
            ps.setInt(3,t.getUserId());
@@ -139,14 +147,19 @@ public class TransactionRepository implements IRepository {
            ps.setString(7,t.getTag());
            ps.setInt(8,t.getType());
            ps.setInt(9, t.getSourceShopId());
-           ps.setDate(10, new Date((date.getTime())));
-           ps.setInt(11,0);
-
-           if (t.getType() == 0)
-               ps.setDouble(1, (-t.getAmount()));
+           ps.setInt(10,t.getCarId());
+           ps.setInt(11,t.getHouseId());
+           ps.setDate(12, new Date((date.getTime())));
+           ps.setInt(13,0);
 
            ps.executeUpdate();
             logger.info("[Transaction Repository Create] - Success");
+
+           newSold = ((Account) accRep.getById(t.getAccountId())).getSold() + t.getAmount();
+
+           PreparedStatement stmt = con.prepareStatement("UPDATE " + CONSTANTS.ACCOUNT_TABLE + " SET sold = " + newSold + " WHERE id = " + t.getAccountId());
+           stmt.executeUpdate();
+
            return true;
 
        }

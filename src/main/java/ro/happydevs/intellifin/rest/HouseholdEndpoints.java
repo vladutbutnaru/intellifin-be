@@ -84,5 +84,19 @@ public class HouseholdEndpoints {
 
     }
 
+    //list of all household members in the system
+    @RequestMapping(value ="/getall")
+    public ResponseEntity<?> getAll(@RequestHeader("Authentication") String token){
+
+        if (tokenService.verifyToken(token)) {
+
+
+            return ResponseEntity.ok(householdService.getAll());
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+
+    }
+
+
 
 }

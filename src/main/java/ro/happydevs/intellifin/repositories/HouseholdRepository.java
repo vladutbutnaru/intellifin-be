@@ -16,8 +16,38 @@ public class HouseholdRepository implements IRepository{
     private static Logger logger = LoggerFactory.getLogger(HouseholdRepository.class);
 
 
-    @Override //list of households
-    public ArrayList<?> getAll() {return null;}
+    @Override //list of household members (all)
+    public ArrayList<?> getAll() {
+
+        ArrayList<Household> listOfExistingHouseholdMembers = new ArrayList<Household>();
+        Connection con = DBConnection.getConnection();
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM " + CONSTANTS.HOUSEHOLDS_TABLE);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Household h = new Household();
+                h.setId(rs.getInt(1));
+                h.setNameHousehold(rs.getString(2));
+                h.setUsernameHousehold(rs.getString(3));
+                h.setAddressHousehold(rs.getString(4));
+                h.setCityHousehold(rs.getInt(5));
+                h.setDeleted(rs.getBoolean(6));
+                h.setIsHouseHoldAdmin(rs.getInt(7));
+                h.setIdHousehold(rs.getInt(8));
+                h.setUserID(rs.getInt(9));
+                listOfExistingHouseholdMembers.add(h);
+                logger.info("[HouseholdRepository] - listOfExistingHouseholdMembers success!");
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("[HouseholdRepository] - listOfExistingHouseholdMembers failed!");
+        }
+        return listOfExistingHouseholdMembers;
+    }
+
+
     @Override
     public ArrayList<?> getAllByStringColumn(String column, String value) {
         return null;
@@ -63,14 +93,15 @@ public class HouseholdRepository implements IRepository{
         Household h = (Household) object;
 
         try{
-            PreparedStatement ps = con.prepareStatement("INSERT INTO " + CONSTANTS.HOUSEHOLDS_TABLE + "(name,address,city,deleted,is_admin,house_id,userID) VALUES(?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO " + CONSTANTS.HOUSEHOLDS_TABLE + "(houseName,houseUserName,address,city,deleted,is_admin,house_id,userID) VALUES(?,?,?,?,?,?,?,?)");
             ps.setString(1,h.getNameHousehold());
-            ps.setString(2,h.getAddressHousehold());
-            ps.setInt(3,h.getCityHousehold());
-            ps.setBoolean(4,false);
-            ps.setInt(5,1); //daca e admin e 1
-            ps.setInt(6,h.getIdHousehold());
-            ps.setInt(7,h.getUserID());
+            ps.setString(2,h.getUsernameHousehold());
+            ps.setString(3,h.getAddressHousehold());
+            ps.setInt(4,h.getCityHousehold());
+            ps.setBoolean(5,false);
+            ps.setInt(6,1); //daca e admin e 1
+            ps.setInt(7,h.getIdHousehold());
+            ps.setInt(8,h.getUserID());
 
             ps.executeUpdate();
             logger.info("[Household Repository Create] - Success");
@@ -118,15 +149,16 @@ public class HouseholdRepository implements IRepository{
         Household h = (Household) object;
 
         try{
-            PreparedStatement ps = con.prepareStatement("INSERT INTO " + CONSTANTS.HOUSEHOLDS_TABLE + "(name,address,city,deleted,is_admin,house_id,userID) VALUES(?,?,?,?,?,?,?)");
+            PreparedStatement ps = con.prepareStatement("INSERT INTO " + CONSTANTS.HOUSEHOLDS_TABLE + "(houseName,houseUserName,address,city,deleted,is_admin,house_id,userID) VALUES(?,?,?,?,?,?,?,?)");
 
             ps.setString(1,h.getNameHousehold());
-            ps.setString(2,h.getAddressHousehold());
-            ps.setInt(3,h.getCityHousehold());
-            ps.setBoolean(4,false);
-            ps.setInt(5,0);
-            ps.setInt(6,h.getIdHousehold());
-            ps.setInt(7,h.getUserID());
+            ps.setString(2,h.getUsernameHousehold());
+            ps.setString(3,h.getAddressHousehold());
+            ps.setInt(4,h.getCityHousehold());
+            ps.setBoolean(5,false);
+            ps.setInt(6,0); //daca e admin e 1
+            ps.setInt(7,h.getIdHousehold());
+            ps.setInt(8,h.getUserID());
 
             ps.executeUpdate();
             logger.info("[Household Repository addMemberToHousehold] - Success");

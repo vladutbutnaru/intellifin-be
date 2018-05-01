@@ -2,6 +2,7 @@ package ro.happydevs.intellifin.models;
 
 public class Car extends User{
 
+    private int id;
     private String carVIN;
     private String carManufacturer;
     private int carYear;
@@ -85,5 +86,15 @@ public class Car extends User{
     @Override
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -4,14 +4,16 @@ import java.util.ArrayList;
 
 public class Household extends User {
 
+    private int id;
     private int userID;
-    private String nameHousehold; // User's name in the household (not the name of the Household)
+    private String nameHousehold; // household's name
+    private String usernameHousehold; // User's name in the household (not the name of the Household)
     private String addressHousehold;
     private int cityHousehold;
     private ArrayList<User> members; //
     private boolean deleted;
     private int isHouseHoldAdmin;
-    private int idHousehold; //id to diferentiate Households
+    private int idHousehold; //id to differentiate Households
 
 
 
@@ -79,5 +81,23 @@ public class Household extends User {
 
     public void setUserID(int userID) {
         this.userID = userID;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsernameHousehold() {
+        return usernameHousehold;
+    }
+
+    public void setUsernameHousehold(String usernameHousehold) {
+        this.usernameHousehold = usernameHousehold;
     }
 }

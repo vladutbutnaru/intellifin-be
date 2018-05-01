@@ -6,6 +6,8 @@ import ro.happydevs.intellifin.models.Car;
 import ro.happydevs.intellifin.repositories.CarRepository;
 import ro.happydevs.intellifin.repositories.TokenRepository;
 
+import java.util.ArrayList;
+
 public class CarService {
 
     private static Logger logger = LoggerFactory.getLogger(CarService.class);
@@ -25,6 +27,11 @@ public class CarService {
 
         logger.info("[CarService - deleteCar] - Called");
         return carRepository.delete(car);
+    }
+
+    public ArrayList<Car> getAll(){
+        logger.info("[CarService getAll] - Called");
+        return (ArrayList<Car>) carRepository.getAll();
     }
 
 }

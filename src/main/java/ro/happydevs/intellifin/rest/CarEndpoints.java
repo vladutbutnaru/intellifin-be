@@ -41,6 +41,18 @@ public class CarEndpoints {
 
     }
 
+    @RequestMapping(value ="/getall")
+    public ResponseEntity<?> getAll(@RequestHeader("Authentication") String token){
+
+        if (tokenService.verifyToken(token)) {
+
+
+            return ResponseEntity.ok(carService.getAll());
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+
+    }
+
 
 
 

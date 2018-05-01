@@ -54,6 +54,12 @@ public class HouseholdService {
         return (ArrayList<Household>) householdRepository.getHouseholdMembers(idHousehold);
     }
 
+    //list of all household members in the system
+    public ArrayList<Household> getAll(){
+        logger.info("[Householdservice getALL] - Called");
+        return (ArrayList<Household>) householdRepository.getAll();
+    }
+
 
 
 

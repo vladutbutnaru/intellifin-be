@@ -8,6 +8,7 @@ import ro.happydevs.intellifin.utils.database.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class CarRepository implements IRepository {
@@ -15,9 +16,40 @@ public class CarRepository implements IRepository {
     private static Logger logger = LoggerFactory.getLogger(CarRepository.class);
 
 
+
     @Override
     public ArrayList<?> getAll() {
-        return null;
+
+        ArrayList<Car> listOfExistingCars = new ArrayList<Car>();
+        Connection con = DBConnection.getConnection();
+        try{
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM " + CONSTANTS.CAR_TABLE );
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+            Car car = new Car();
+            car.setCarID(rs.getInt(1));
+            car.setCarVIN(rs.getString(2));
+            car.setCarManufacturer(rs.getString(3));
+            car.setCarYear(rs.getInt(4));
+            car.setCarModel(rs.getString(5));
+            car.setCarColor(rs.getString(6));
+            car.setCarFuelType(rs.getString(7));
+            car.setUserID(rs.getInt(8));
+            car.setDeleted(rs.getBoolean(9));
+            listOfExistingCars.add(car);
+            logger.info("[CarRepository] - getAll success!");
+        }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("[Car Repository] - getAll Error");
+
+        }
+
+
+
+        return listOfExistingCars;
     }
 
     @Override
@@ -46,6 +78,7 @@ public class CarRepository implements IRepository {
             return true;
         }catch(Exception e){
             e.printStackTrace();
+            logger.error("[Car Repository] - delete Car Error");
         }
 
 

@@ -3,8 +3,9 @@ package ro.happydevs.intellifin.repositories;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ro.happydevs.intellifin.models.Account;
-import ro.happydevs.intellifin.models.Expense;
+
 import ro.happydevs.intellifin.models.Transaction;
+import ro.happydevs.intellifin.models.User;
 import ro.happydevs.intellifin.utils.constants.CONSTANTS;
 import ro.happydevs.intellifin.utils.database.DBConnection;
 
@@ -20,7 +21,7 @@ public class TransactionRepository implements IRepository {
     private AccountRepository accRep = new AccountRepository();
 
     @Override
-    public ArrayList<?> getAll() {
+    public ArrayList<Transaction> getAll() {
 
         return getAllByNumericColumn("deleted", 0);
     }
@@ -170,4 +171,34 @@ public class TransactionRepository implements IRepository {
 
        return false;
     }
+
+    public ArrayList<Transaction> getAllEarnings(int userId, Date startDate) {
+
+        ArrayList<Transaction> earnings = new ArrayList<>();
+        ArrayList<Transaction> transList = getAllByNumericColumn("user_id", userId);
+
+        for (Transaction trans: transList)
+        if (((Transaction)(trans)).getType() == 1)
+            if (((Transaction)(trans)).getCreatedAt().after(startDate))
+                earnings.add(trans);
+        return earnings;
+
+    }
+
+
+    public ArrayList<Transaction> getAllExpenses(int userId, Date startDate) {
+
+        ArrayList<Transaction> expenses = new ArrayList<>();
+        ArrayList<Transaction> transList = getAllByNumericColumn("user_id", userId);
+
+        for (Transaction trans: transList)
+            if (((Transaction)(trans)).getType() == 0)
+                if (((Transaction)(trans)).getCreatedAt().after(startDate))
+                expenses.add(trans);
+        return expenses;
+
+    }
+
+
+
 }

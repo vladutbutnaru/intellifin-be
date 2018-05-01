@@ -11,6 +11,8 @@ import ro.happydevs.intellifin.services.TokenService;
 import ro.happydevs.intellifin.services.TransactionService;
 import ro.happydevs.intellifin.services.UserService;
 
+import java.sql.Date;
+
 @RestController
 @CrossOrigin(value = "*")
 @RequestMapping("/rest/transactions")
@@ -41,6 +43,17 @@ public class ExpenseEndpoints {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
 
+    }
+
+    @RequestMapping(value="/expense/getAllFromStartDate")
+    public ResponseEntity<?> getAllFromStartDate(@RequestHeader("Authentication") String token,
+                                                @RequestParam(value = "startDate") Date startDate){
+
+        if (tokenService.verifyToken(token)) {
+
+            return ResponseEntity.ok(transactionService.getAllExpenses(token,startDate));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
     }
 

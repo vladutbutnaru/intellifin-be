@@ -18,6 +18,8 @@ public class CONSTANTS {
     public static final String EXPENSE_PRODUCTS_TABLE = "Expense_Products";
     public static final String PRODUCT_PRICE_TABLE = "Product_Prices";
     public static final String NOTIFICATION_TABLE = "Notifications";
+    public static final String HOUSEHOLDS_TABLE = "Households";
+    public static final String CAR_TABLE = "Car";
 
     //User type constants
 

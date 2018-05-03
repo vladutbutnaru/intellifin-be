@@ -2,14 +2,19 @@ package ro.happydevs.intellifin.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ro.happydevs.intellifin.models.Account;
 import ro.happydevs.intellifin.models.Transaction;
 import ro.happydevs.intellifin.models.User;
 import ro.happydevs.intellifin.repositories.AccountRepository;
 import ro.happydevs.intellifin.repositories.TokenRepository;
 import ro.happydevs.intellifin.repositories.TransactionRepository;
-import ro.happydevs.intellifin.repositories.UserRepository;
+
 
 import java.util.ArrayList;
+
+import java.sql.Date;
+import java.util.List;
 
 public class TransactionService {
 
@@ -46,4 +51,30 @@ public class TransactionService {
 
     }
 
+    public ArrayList<Transaction> getAllEarnings(String token, Date startDate) {
+
+        User u = tokenRepository.getUserByToken(token);
+
+        for (Transaction trans : transactionRepository.getAll()) {
+
+            if (trans.getUserId() == u.getId())
+
+                return transactionRepository.getAllEarnings(u.getId(), startDate);
+        }
+    return null;
+    }
+
+
+    public ArrayList<Transaction> getAllExpenses(String token, Date startDate) {
+
+        User u = tokenRepository.getUserByToken(token);
+
+        for (Transaction trans : transactionRepository.getAll()) {
+
+            if (trans.getUserId() == u.getId())
+
+                return transactionRepository.getAllExpenses(u.getId(),startDate);
+        }
+        return null;
+    }
 }

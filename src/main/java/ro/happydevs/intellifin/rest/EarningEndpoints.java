@@ -8,6 +8,7 @@ import ro.happydevs.intellifin.models.Transaction;
 import ro.happydevs.intellifin.services.AccountService;
 import ro.happydevs.intellifin.services.TokenService;
 import ro.happydevs.intellifin.services.TransactionService;
+import java.sql.Date;
 
 @RestController
 @CrossOrigin(value = "*")
@@ -41,5 +42,16 @@ public class EarningEndpoints {
 
     }
 
+    @RequestMapping(value="/earning/getAllFromStartDate")
+    public ResponseEntity<?> getAllFromStartDate(@RequestHeader("Authentication") String token,
+                                    @RequestParam(value = "startDate") Date date){
+
+        if (tokenService.verifyToken(token)) {
+
+                    return ResponseEntity.ok(transactionService.getAllEarnings(token,date));
+            }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+
+    }
 
 }

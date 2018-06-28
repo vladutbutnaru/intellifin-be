@@ -1,24 +1,55 @@
 package ro.happydevs.intellifin.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class Transaction extends GenericModel {
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "intelli_transaction")
+public class Transaction {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+
+    private boolean deleted;
 
     private double amount;
-    private int currency;
-    private int userId;
-    private int accountId;
-    private int recurring;
+    private Long currency;
+    private Long userId;
+    private Long accountId;
+    private boolean recurring;
     private int recurringDays;
     private String tag;
     private int type;
-    private int shopId;
+    private Long shopId;
 
-    public int getShopId() {
-        return shopId;
+    public Long getId() {
+        return id;
     }
 
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     public double getAmount() {
@@ -29,36 +60,44 @@ public class Transaction extends GenericModel {
         this.amount = amount;
     }
 
-    public int getCurrency() {
+    public Long getCurrency() {
         return currency;
     }
 
-    public void setCurrency(int currency) {
+    public void setCurrency(Long currency) {
         this.currency = currency;
     }
 
-    public int getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public int getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 
-    public int getRecurring() {
+    public boolean isRecurring() {
         return recurring;
     }
 
-    public void setRecurring(int recurring) {
+    public void setRecurring(boolean recurring) {
         this.recurring = recurring;
+    }
+
+    public Long getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Long shopId) {
+        this.shopId = shopId;
     }
 
     public int getRecurringDays() {

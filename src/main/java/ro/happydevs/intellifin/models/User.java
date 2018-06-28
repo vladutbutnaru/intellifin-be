@@ -1,11 +1,25 @@
 package ro.happydevs.intellifin.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class User extends GenericModel {
+@Entity
+@Table(name = "intelli_user")
+public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private java.util.Date createdAt;
+
+    private boolean deleted;
 
     private String email;
     private String password;
@@ -16,7 +30,7 @@ public class User extends GenericModel {
     private int numberOfKids;
     private boolean ownsApartment;
     private boolean rentApartment;
-    private int city;
+    private Long city;
     private String address;
     //see CONSTANTS for type descriptions
     private int subscriptionType;
@@ -29,6 +43,7 @@ public class User extends GenericModel {
 
 
     //transient
+    @Transient
     private ArrayList<Account> accounts;
 
 
@@ -104,11 +119,11 @@ public class User extends GenericModel {
         this.rentApartment = rentApartment;
     }
 
-    public int getCity() {
+    public Long getCity() {
         return city;
     }
 
-    public void setCity(int city) {
+    public void setCity(Long city) {
         this.city = city;
     }
 
@@ -174,5 +189,29 @@ public class User extends GenericModel {
 
     public void setAccounts(ArrayList<Account> accounts) {
         this.accounts = accounts;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public java.util.Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(java.util.Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }

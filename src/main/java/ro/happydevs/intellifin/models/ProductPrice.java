@@ -1,10 +1,67 @@
 package ro.happydevs.intellifin.models;
 
-public class ProductPrice extends GenericModel {
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-    private int productId;
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "intelli_product_price")
+public class ProductPrice {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+
+    private boolean deleted;
+
+
+    private Long productId;
     private double price;
-    private int shopId;
+    private Long shopId;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public Long getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Long shopId) {
+        this.shopId = shopId;
+    }
 
     public double getPrice() {
         return price;
@@ -14,21 +71,6 @@ public class ProductPrice extends GenericModel {
         this.price = price;
     }
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public int getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(int shopId) {
-        this.shopId = shopId;
-    }
 
     @Override
     public String toString() {

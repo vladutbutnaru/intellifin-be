@@ -1,5 +1,6 @@
 package ro.happydevs.intellifin.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +12,8 @@ import ro.happydevs.intellifin.services.CityService;
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "/rest/cities")
 public class CityEndpoints {
-
-    private CityService cityService = new CityService();
+    @Autowired
+    CityService cityService;
 
     @RequestMapping(value = "/list")
     public ResponseEntity<?> getList() {

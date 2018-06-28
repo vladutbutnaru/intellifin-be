@@ -2,6 +2,7 @@ package ro.happydevs.intellifin.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,10 @@ import ro.happydevs.intellifin.services.TokenService;
 @RequestMapping(value = "/rest/accounts")
 public class AccountEndpoints {
     private static Logger logger = LoggerFactory.getLogger(AccountEndpoints.class);
-    private AccountService accountService = new AccountService();
-    private TokenService tokenService = new TokenService();
+    @Autowired
+    private AccountService accountService;
+    @Autowired
+    private TokenService tokenService;
 
 
     @RequestMapping(value = "/create")
@@ -43,7 +46,7 @@ public class AccountEndpoints {
 
     @RequestMapping(value = "/get")
     public ResponseEntity<?> getAccount(@RequestHeader("Authentication") String token,
-                                        @RequestParam(value = "id") int id) {
+                                        @RequestParam(value = "id") Long id) {
         if (tokenService.verifyToken(token)) {
 
 

@@ -1,9 +1,61 @@
 package ro.happydevs.intellifin.models;
 
-public class Product extends GenericModel {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name = "intelli_product")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date createdAt;
+
+    private boolean deleted;
+
+
     private String name;
     private String imagePath;
-    private int category;
+    private Long category;
+
+    private String um;
+
+    public String getUm() {
+        return um;
+    }
+
+    public void setUm(String um) {
+        this.um = um;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     public String getName() {
         return name;
@@ -21,11 +73,11 @@ public class Product extends GenericModel {
         this.imagePath = imagePath;
     }
 
-    public int getCategory() {
+    public Long getCategory() {
         return category;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(Long category) {
         this.category = category;
     }
 }

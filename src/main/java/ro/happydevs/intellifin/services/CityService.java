@@ -1,5 +1,8 @@
 package ro.happydevs.intellifin.services;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.City;
 import ro.happydevs.intellifin.repositories.CityRepository;
 
@@ -7,14 +10,15 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class CityService {
+    @Autowired
+    CityRepository cityRepository;
 
-    private CityRepository cityRepository = new CityRepository();
-
-    public ArrayList<City> getAll() {
-        return (ArrayList<City>) cityRepository.getAll();
+    public List<City> getAll() {
+        return cityRepository.findAll();
 
 
     }
@@ -33,7 +37,7 @@ public class CityService {
                 String[] municipalityLine = line.split(cvsSplitBy);
                 City city = new City();
                 city.setName(municipalityLine[2].replace("\"", ""));
-                cityRepository.create(city);
+                cityRepository.save(city);
 
 
             }

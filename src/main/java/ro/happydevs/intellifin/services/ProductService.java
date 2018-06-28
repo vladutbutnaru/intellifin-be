@@ -1,27 +1,33 @@
 package ro.happydevs.intellifin.services;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.Product;
 import ro.happydevs.intellifin.repositories.ProductRepository;
 
-import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class ProductService {
-    private ProductRepository productRepository = new ProductRepository();
+    @Autowired
+    ProductRepository productRepository;
+
 
     public boolean createProduct(Product product) {
         //TODO: Find category by name
-        return productRepository.create(product);
+        productRepository.save(product);
+        return true;
+    }
+
+    public List<Product> getAll() {
+        return productRepository.findAll();
+
 
     }
 
-    public ArrayList<Product> getAll() {
-        return (ArrayList<Product>) productRepository.getAll();
-
-
-    }
-
-    public Product getById(int id) {
-        return (Product) productRepository.getById(id);
+    public Product getById(Long id) {
+        return productRepository.findById(id).get();
 
     }
 

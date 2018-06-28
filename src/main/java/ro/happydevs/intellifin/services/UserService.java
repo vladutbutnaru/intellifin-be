@@ -2,18 +2,21 @@ package ro.happydevs.intellifin.services;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.User;
-import ro.happydevs.intellifin.repositories.TokenRepository;
 import ro.happydevs.intellifin.repositories.UserRepository;
 
-
+@Service
 public class UserService {
 
     private static Logger logger = LoggerFactory.getLogger(UserService.class);
-
-    private UserRepository userRepository = new UserRepository();
-    private TokenRepository tokenRepository = new TokenRepository();
-    private NotificationService notificationService = new NotificationService();
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    TokenService tokenService;
+    @Autowired
+    NotificationService notificationService;
 
     /**
      * User logins with email and password and returns the token
@@ -23,21 +26,20 @@ public class UserService {
      * @return token
      */
     public String loginUser(String email, String password) {
-        int result = userRepository.loginUser(email, password);
 
-        if (result > 0) {
-            return tokenRepository.createTokenForUser(result);
+        User loggedInUser = userRepository.findByEmailAndPassword(email,password);
+       if( loggedInUser!=null){
+           return tokenService.createToken(loggedInUser.getId());
+       }
 
-
-        }
         return null;
 
     }
 
     public boolean registerUser(User user) {
-        userRepository.create(user);
+        user = userRepository.save(user);
 
-        notificationService.createNotificationForNewUser(userRepository.getAllByStringColumn("email", user.getEmail()).get(0).getId());
+        notificationService.createNotificationForNewUser(user.getId());
 
 
         return true;
@@ -45,7 +47,7 @@ public class UserService {
 
 
     public User getUserForToken(String token) {
-        return tokenRepository.getUserByToken(token);
+        return tokenService.getUserByToken(token);
 
 
     }

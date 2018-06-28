@@ -2,6 +2,7 @@ package ro.happydevs.intellifin.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +17,10 @@ import ro.happydevs.intellifin.services.UserService;
 public class UserEndpoints {
 
     private static Logger logger = LoggerFactory.getLogger(UserEndpoints.class);
-
-    private UserService userService = new UserService();
-    private TokenService tokenService = new TokenService();
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private TokenService tokenService;
 
 
     @RequestMapping(value = "/login")

@@ -1,5 +1,6 @@
 package ro.happydevs.intellifin.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,9 +14,10 @@ import ro.happydevs.intellifin.services.TokenService;
 @CrossOrigin(origins = "*")
 @RequestMapping(value = "/rest/notifications")
 public class NotificationEndpoints {
-
-    private NotificationService notificationService = new NotificationService();
-    private TokenService tokenService = new TokenService();
+    @Autowired
+    private NotificationService notificationService;
+    @Autowired
+    private TokenService tokenService;
 
     @RequestMapping(value = "/list")
     public ResponseEntity<?> getAllForUser(@RequestHeader("Authentication") String token) {
@@ -24,7 +26,6 @@ public class NotificationEndpoints {
             return ResponseEntity.ok(notificationService.getNotificationsForUser(token));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
-
 
 
     }

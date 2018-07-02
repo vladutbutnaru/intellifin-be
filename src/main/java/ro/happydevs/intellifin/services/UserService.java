@@ -27,15 +27,22 @@ public class UserService {
      */
     public String loginUser(String email, String password) {
 
-        User loggedInUser = userRepository.findByEmailAndPassword(email,password);
-       if( loggedInUser!=null){
-           return tokenService.createToken(loggedInUser.getId());
-       }
+        User loggedInUser = userRepository.findByEmailAndPassword(email, password);
+        if (loggedInUser != null) {
+            return tokenService.createToken(loggedInUser.getId());
+        }
 
         return null;
 
     }
 
+    /**
+     * Registers a new user and generates a default notification
+     * that redirects to user configuration page
+     *
+     * @param user
+     * @return boolean
+     */
     public boolean registerUser(User user) {
         user = userRepository.save(user);
 
@@ -45,10 +52,29 @@ public class UserService {
         return true;
     }
 
-
+    /**
+     * Returns user information based on a token received
+     * from front-end
+     *
+     * @param token
+     * @return User
+     */
     public User getUserForToken(String token) {
         return tokenService.getUserByToken(token);
 
 
+    }
+
+
+
+    /**
+     * Returns user information based on a email received
+     * from front-end
+     *
+     * @param email
+     * @return User
+     */
+    public User getUserForEmail(String email){
+        return userRepository.findByEmail(email);
     }
 }

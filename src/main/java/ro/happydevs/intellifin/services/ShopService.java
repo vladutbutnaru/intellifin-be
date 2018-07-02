@@ -5,10 +5,8 @@ import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.Shop;
 import ro.happydevs.intellifin.models.User;
 import ro.happydevs.intellifin.repositories.ShopRepository;
-import ro.happydevs.intellifin.repositories.TokenRepository;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class ShopService {
@@ -20,11 +18,11 @@ public class ShopService {
     TokenService tokenService;
 
 
-    public ArrayList<Shop> getAllShopsFromUserCity(String token){
+    public ArrayList<Shop> getAllShopsFromUserCity(String token) {
         ArrayList<Shop> shops = new ArrayList<>();
         User loggedInUser = tokenService.getUserByToken(token);
-        for(Shop shop : shopRepository.findAll()){
-            if(shop.getCity() == loggedInUser.getCity()){
+        for (Shop shop : shopRepository.findAll()) {
+            if (shop.getCity() == loggedInUser.getCity()) {
                 shops.add(shop);
             }
 
@@ -33,10 +31,9 @@ public class ShopService {
         return shops;
 
 
-
     }
 
-    public void createShop(Shop shop){
+    public void createShop(Shop shop) {
         shopRepository.save(shop);
 
     }

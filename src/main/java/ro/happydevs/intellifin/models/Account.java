@@ -28,6 +28,24 @@ public class Account {
     private String iban;
     private boolean isCreditCard;
     private double creditCardLimit;
+    private boolean sharedWithHousehold;
+    private Long sharedHouseholdId;
+
+    public boolean isSharedWithHousehold() {
+        return sharedWithHousehold;
+    }
+
+    public void setSharedWithHousehold(boolean sharedWithHousehold) {
+        this.sharedWithHousehold = sharedWithHousehold;
+    }
+
+    public Long getSharedHouseholdId() {
+        return sharedHouseholdId;
+    }
+
+    public void setSharedHouseholdId(Long sharedHouseholdId) {
+        this.sharedHouseholdId = sharedHouseholdId;
+    }
 
     public String getIban() {
         return iban;

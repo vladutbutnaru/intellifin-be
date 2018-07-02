@@ -17,7 +17,7 @@ public class ProductEndpoints {
     @Autowired
     private TokenService tokenService;
 
-    @RequestMapping(value = "/create", consumes = "application/json")
+    @RequestMapping(value = "/create", consumes = "application/json", method = RequestMethod.POST)
     public ResponseEntity<?> createProduct(@RequestBody Product product,
                                            @RequestHeader("Authentication") String token) {
 
@@ -32,7 +32,7 @@ public class ProductEndpoints {
     }
 
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResponseEntity<?> listProducts(@RequestHeader("Authentication") String token) {
 
         if (tokenService.verifyToken(token)) {
@@ -46,7 +46,7 @@ public class ProductEndpoints {
     }
 
 
-    @RequestMapping(value = "/get")
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
     public ResponseEntity<?> getProduct(@RequestHeader("Authentication") String token,
                                         @RequestParam(value = "id") Long id) {
 

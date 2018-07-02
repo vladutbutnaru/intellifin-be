@@ -11,21 +11,21 @@ import ro.happydevs.intellifin.services.TokenService;
 @CrossOrigin(value = "*")
 @RequestMapping(value = "/rest/products/prices")
 public class ProductPriceEndpoints {
-@Autowired
-TokenService tokenService;
+    @Autowired
+    TokenService tokenService;
 
-@Autowired
+    @Autowired
     ProductPriceService productPriceService;
 
-    @RequestMapping(value = "/get/shop")
+    @RequestMapping(value = "/get/shop", method = RequestMethod.GET)
     public ResponseEntity<?> getProduct(@RequestHeader("Authentication") String token,
                                         @RequestParam(value = "shopId") Long shopId,
-                                        @RequestParam(value="productId") Long productId)  {
+                                        @RequestParam(value = "productId") Long productId) {
 
         if (tokenService.verifyToken(token)) {
 
 
-            return ResponseEntity.ok(productPriceService.findPriceForProductWithGivenShopId(productId,shopId));
+            return ResponseEntity.ok(productPriceService.findPriceForProductWithGivenShopId(productId, shopId));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 

@@ -3,10 +3,7 @@ package ro.happydevs.intellifin.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.happydevs.intellifin.services.NotificationService;
 import ro.happydevs.intellifin.services.TokenService;
 
@@ -19,7 +16,7 @@ public class NotificationEndpoints {
     @Autowired
     private TokenService tokenService;
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResponseEntity<?> getAllForUser(@RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
 

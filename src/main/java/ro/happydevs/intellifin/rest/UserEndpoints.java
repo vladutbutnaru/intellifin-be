@@ -41,7 +41,7 @@ public class UserEndpoints {
 
     }
 
-    @RequestMapping(value = "/register")
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<UserLoginDTO> registerUser(
             @RequestBody User user
     ) {
@@ -58,12 +58,25 @@ public class UserEndpoints {
 
     }
 
-    @RequestMapping(value = "/info")
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
     public ResponseEntity<?> getUserInfo(@RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
 
 
             return ResponseEntity.ok(userService.getUserForToken(token));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+
+
+    }
+
+    @RequestMapping(value = "/find/email", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserByEmail(@RequestHeader("Authentication") String token,
+                                            @RequestParam("email") String email) {
+        if (tokenService.verifyToken(token)) {
+
+
+            return ResponseEntity.ok(userService.getUserForEmail(email));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 

@@ -23,5 +23,9 @@ public class CONSTANTS {
     public static final int ACCOUNT_TYPE_BANK_DEPOSIT = 5;
     public static final int ACCOUNT_TYPE_VIRTUAL = 6;
 
+    //NOTIFICATION TYPES
+    public static final String NOTIFICATION_TYPE_HOUSEHOLD_INVITE = "HOUSEHOLD_INVITE";
+
+
 
 }

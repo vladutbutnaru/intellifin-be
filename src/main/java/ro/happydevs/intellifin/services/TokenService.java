@@ -24,15 +24,14 @@ public class TokenService {
 
     public boolean verifyToken(String code) {
         logger.info("[Verify Token] - Verifying token");
-        if(tokenRepository.findByCode(code)!=null)
-        return true;
+        if (tokenRepository.findByCode(code) != null)
+            return true;
 
         return false;
 
     }
 
     public User getUserByToken(String code) {
-
 
 
         return userRepository.findById(tokenRepository.findByCode(code).getUserId()).get();

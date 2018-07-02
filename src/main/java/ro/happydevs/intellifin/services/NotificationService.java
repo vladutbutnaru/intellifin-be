@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.Notification;
 import ro.happydevs.intellifin.models.User;
+import ro.happydevs.intellifin.repositories.HouseholdRepository;
 import ro.happydevs.intellifin.repositories.NotificationRepository;
+import ro.happydevs.intellifin.repositories.UserRepository;
+import ro.happydevs.intellifin.utils.constants.CONSTANTS;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,6 +20,16 @@ public class NotificationService {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    TokenService tokenService;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    HouseholdRepository householdRepository;
+
 
     public List<Notification> getNotificationsForUser(String token) {
         User loggedInUser = userService.getUserForToken(token);
@@ -41,6 +53,50 @@ public class NotificationService {
         notification.setIcon("settings-notification.png");
 
         createNotificationForUser(notification);
+
+
+    }
+
+    public boolean isUserAlreadyInvitedToHousehold(String token, Long invitingMemberId){
+
+        for(Notification n : getNotificationsForUser(token)){
+            if(n.getType().equals(CONSTANTS.NOTIFICATION_TYPE_HOUSEHOLD_INVITE) && n.getInvitingMemberId() == invitingMemberId)
+                return true;
+
+        }
+        return false;
+
+
+
+    }
+
+    public void createInvitationToHouseholdNotification(Long userToInviteId, User invitingUser, Long houseHoldId){
+
+
+        Notification notification = new Notification();
+        notification.setType(CONSTANTS.NOTIFICATION_TYPE_HOUSEHOLD_INVITE);
+        notification.setViewed(false);
+        notification.setUserId(userToInviteId);
+        notification.setText(invitingUser.getEmail() + " te-a invitat in Household-ul " + householdRepository.findById(houseHoldId).get().getName());
+        notification.setIcon("settings-notification.png");
+        notification.setInviteId(houseHoldId);
+        notification.setInvitingMemberId(invitingUser.getId());
+
+
+        createNotificationForUser(notification);
+
+
+
+    }
+
+    public void deleteHouseholdInviteNotification(String token, Long householdId){
+        for(Notification n : getNotificationsForUser(token)){
+            if(n.getInviteId() == householdId){
+                notificationRepository.delete(n);
+                return;
+            }
+
+        }
 
 
     }

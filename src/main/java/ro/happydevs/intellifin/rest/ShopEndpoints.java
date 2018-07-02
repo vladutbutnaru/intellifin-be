@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ro.happydevs.intellifin.models.Product;
 import ro.happydevs.intellifin.models.Shop;
 import ro.happydevs.intellifin.services.ShopService;
 import ro.happydevs.intellifin.services.TokenService;
@@ -14,19 +13,19 @@ import ro.happydevs.intellifin.services.TokenService;
 @RequestMapping(value = "/rest/shops")
 public class ShopEndpoints {
 
-@Autowired
+    @Autowired
     TokenService tokenService;
 
-@Autowired
+    @Autowired
     ShopService shopService;
 
-    @RequestMapping(value = "/create", consumes = "application/json")
+    @RequestMapping(value = "/create", consumes = "application/json", method = RequestMethod.POST)
     public ResponseEntity<?> createShop(@RequestBody Shop shop,
-                                           @RequestHeader("Authentication") String token) {
+                                        @RequestHeader("Authentication") String token) {
 
         if (tokenService.verifyToken(token)) {
 
-           shopService.createShop(shop);
+            shopService.createShop(shop);
             return ResponseEntity.ok(shop);
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
@@ -34,7 +33,7 @@ public class ShopEndpoints {
 
     }
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResponseEntity<?> createShop(@RequestHeader("Authentication") String token) {
 
         if (tokenService.verifyToken(token)) {

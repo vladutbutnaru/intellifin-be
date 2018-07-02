@@ -2,10 +2,7 @@ package ro.happydevs.intellifin.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ro.happydevs.intellifin.services.CityService;
 
 @RestController
@@ -15,14 +12,14 @@ public class CityEndpoints {
     @Autowired
     CityService cityService;
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResponseEntity<?> getList() {
 
         return ResponseEntity.ok(cityService.getAll());
 
     }
 
-    @RequestMapping(value = "/import")
+    @RequestMapping(value = "/import", method = RequestMethod.GET)
     public ResponseEntity<?> importCities(@RequestParam(value = "path") String path) {
 
         cityService.importCities(path);

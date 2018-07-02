@@ -24,6 +24,33 @@ public class Notification {
     private boolean viewed;
     private Long userId;
     private String link;
+    private String type;
+    private Long inviteId;
+    private Long invitingMemberId;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getInviteId() {
+        return inviteId;
+    }
+
+    public void setInviteId(Long inviteId) {
+        this.inviteId = inviteId;
+    }
+
+    public Long getInvitingMemberId() {
+        return invitingMemberId;
+    }
+
+    public void setInvitingMemberId(Long invitingMemberId) {
+        this.invitingMemberId = invitingMemberId;
+    }
 
     public Long getId() {
         return id;

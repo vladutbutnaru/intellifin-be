@@ -24,7 +24,7 @@ public class TransactionEndpoints {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping(value = "/expense/add")
+    @RequestMapping(value = "/expense/add", method = RequestMethod.POST)
     public ResponseEntity<?> addExpense(
             @RequestHeader("Authentication") String token,
             @RequestBody Transaction transaction

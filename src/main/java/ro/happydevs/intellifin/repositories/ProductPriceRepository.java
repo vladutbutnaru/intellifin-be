@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ro.happydevs.intellifin.models.ProductPrice;
-import ro.happydevs.intellifin.models.User;
 
 import java.util.List;
 
@@ -13,6 +12,6 @@ import java.util.List;
 public interface ProductPriceRepository extends JpaRepository<ProductPrice, Long> {
     @Query("select pp from ProductPrice pp where pp.productId = :productId and pp.shopId = :shopId")
     List<ProductPrice> findPricesForProductAndShop(@Param("productId") Long productId,
-                                                  @Param("shopId") Long shopId);
+                                                   @Param("shopId") Long shopId);
 
 }

@@ -10,7 +10,6 @@ import ro.happydevs.intellifin.models.User;
 import ro.happydevs.intellifin.repositories.AccountRepository;
 import ro.happydevs.intellifin.repositories.TokenRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,6 +26,14 @@ public class AccountService {
     @Autowired
     TokenService tokenService;
 
+    /**
+     * Creates an account for a user based on a token
+     * received from front-end
+     *
+     * @param account
+     * @param token
+     * @return boolean
+     */
     public boolean createAccount(Account account, String token) {
         User u = tokenService.getUserByToken(token);
 
@@ -40,6 +47,12 @@ public class AccountService {
 
     }
 
+    /**
+     * List all accounts for a given user
+     *
+     * @param token
+     * @return List<Account>
+     */
     public List<Account> getAccountsForUser(String token) {
         User u = tokenService.getUserByToken(token);
 
@@ -49,6 +62,12 @@ public class AccountService {
 
     }
 
+    /**
+     * Gets an account by ID
+     *
+     * @param accountId
+     * @return Account
+     */
     public Account getAccountById(Long accountId) {
         return accountRepository.findById(accountId).get();
 

@@ -1,2 +1,16 @@
---> Creating a transaction:
-    --> Adauga o plata noua
+HOUSEHOLD
+
+    BASIC
+        --> User can a household (/household/create)
+        --> User can delete a household (/household/delete)
+
+    INVITATION
+        --> User can invite another member to household
+            --> Search for user by email
+            --> Select user to invite
+            --> /household/invite/send
+        --> User can approve invitation to household
+            --> Click on notification
+            --> Click approve
+            --> /household/invite/approve
+

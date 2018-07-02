@@ -1,9 +1,5 @@
 package ro.happydevs.intellifin.models.dto;
 
-import ro.happydevs.intellifin.models.User;
-
-import java.util.ArrayList;
-
 public class UserLoginDTO {
 
     private String token;

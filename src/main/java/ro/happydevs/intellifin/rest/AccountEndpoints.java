@@ -21,7 +21,7 @@ public class AccountEndpoints {
     private TokenService tokenService;
 
 
-    @RequestMapping(value = "/create")
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> createAccount(@RequestBody Account account,
                                            @RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
@@ -33,7 +33,7 @@ public class AccountEndpoints {
 
     }
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ResponseEntity<?> listAccounts(@RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
 
@@ -44,7 +44,7 @@ public class AccountEndpoints {
 
     }
 
-    @RequestMapping(value = "/get")
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
     public ResponseEntity<?> getAccount(@RequestHeader("Authentication") String token,
                                         @RequestParam(value = "id") Long id) {
         if (tokenService.verifyToken(token)) {

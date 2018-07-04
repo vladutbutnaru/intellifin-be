@@ -3,8 +3,8 @@ package ro.happydevs.intellifin.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.happydevs.intellifin.models.Notification;
-import ro.happydevs.intellifin.models.User;
+import ro.happydevs.intellifin.models.business.Notification;
+import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.repositories.HouseholdRepository;
 import ro.happydevs.intellifin.repositories.NotificationRepository;
 import ro.happydevs.intellifin.repositories.UserRepository;
@@ -97,7 +97,14 @@ public class NotificationService {
             }
 
         }
-
+    }
+    public void markNotificationAsRead(Long notificationId){
+        Notification notification = notificationRepository.findById(notificationId).get();
+        notification.setViewed(true);
+        notificationRepository.save(notification);
 
     }
+
+
+
 }

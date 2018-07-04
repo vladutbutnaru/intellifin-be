@@ -2,8 +2,8 @@ package ro.happydevs.intellifin.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.happydevs.intellifin.models.Shop;
-import ro.happydevs.intellifin.models.User;
+import ro.happydevs.intellifin.models.business.Shop;
+import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.repositories.ShopRepository;
 
 import java.util.ArrayList;

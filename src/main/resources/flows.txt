@@ -14,3 +14,48 @@ HOUSEHOLD
             --> Click approve
             --> /household/invite/approve
 
+
+TRANSACTIONS
+
+    REGULAR TRANSACTION (Spending & Earning)
+        --> User goes to add regular transaction screen
+        --> User selects his account
+        --> User inputs a name and description of the transaction
+        --> User inputs the amount
+        --> User inputs a tag and a category
+        --> User saves the transaction
+        --> The balance of the account is subsided
+
+    TRANSFER TRANSACTION
+        --> User goes to add transfer transaction screen
+        --> User selects his account
+        --> User inputs a name and description of transaction
+        --> User inputs the amount
+        --> User inputs a tag and a category
+        --> User selects the account of the beneficiary (either his accounts or another IntelliFin user account)
+        --> User saves the transaction
+        --> The balance of the accounts are updated
+
+    INTELLIPRICE TRANSACTION
+        --> User goes to add IntelliPrice Transaction screen
+        --> User selects his account
+        --> User inputs a name and description of the transaction
+        --> User inputs the store
+        --> User inputs the products and their prices are recommended
+        --> User can create new stores or products
+        --> User inputs a tag and a category
+        --> User saves the transaction
+        --> Product prices are saved
+        --> The balance of the account is subsided
+
+    RECURRENT TRANSACTION
+        --> User goes to add Recurrent Transaction screen
+        --> User selects his account
+        --> User inputs a name and description of the transaction
+        --> User inputs the amount
+        --> User inputs the tag and a category
+        --> User selects type (earning / spending)
+        --> User selects the days of recurrency (days of month)
+        --> User saves the transaction
+
+

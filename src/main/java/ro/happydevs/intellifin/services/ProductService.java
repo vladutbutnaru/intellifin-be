@@ -3,7 +3,7 @@ package ro.happydevs.intellifin.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.happydevs.intellifin.models.Product;
+import ro.happydevs.intellifin.models.business.Product;
 import ro.happydevs.intellifin.repositories.ProductRepository;
 
 import java.util.List;

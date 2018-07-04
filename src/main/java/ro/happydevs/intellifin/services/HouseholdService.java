@@ -2,14 +2,12 @@ package ro.happydevs.intellifin.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.happydevs.intellifin.models.Household;
-import ro.happydevs.intellifin.models.HouseholdMember;
-import ro.happydevs.intellifin.models.Notification;
-import ro.happydevs.intellifin.models.User;
+import ro.happydevs.intellifin.models.business.Household;
+import ro.happydevs.intellifin.models.business.HouseholdMember;
+import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.models.dto.GenericMessageDTO;
 import ro.happydevs.intellifin.repositories.HouseholdMemberRepository;
 import ro.happydevs.intellifin.repositories.HouseholdRepository;
-import ro.happydevs.intellifin.utils.constants.CONSTANTS;
 
 import java.util.Arrays;
 import java.util.List;

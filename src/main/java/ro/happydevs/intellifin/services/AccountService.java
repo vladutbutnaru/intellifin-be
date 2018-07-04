@@ -5,8 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.happydevs.intellifin.models.Account;
-import ro.happydevs.intellifin.models.User;
+import ro.happydevs.intellifin.models.business.Account;
+import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.repositories.AccountRepository;
 import ro.happydevs.intellifin.repositories.TokenRepository;
 

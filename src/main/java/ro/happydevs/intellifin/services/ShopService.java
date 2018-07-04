@@ -1,10 +1,13 @@
 package ro.happydevs.intellifin.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.Shop;
 import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.repositories.ShopRepository;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.util.ArrayList;
 
@@ -16,6 +19,11 @@ public class ShopService {
 
     @Autowired
     TokenService tokenService;
+
+    private static Logger logger = LoggerFactory.getLogger(ShopService.class);
+
+    @Autowired
+    IntelliLogger intelliLogger;
 
 
     public ArrayList<Shop> getAllShopsFromUserCity(String token) {

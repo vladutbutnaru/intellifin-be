@@ -9,6 +9,7 @@ import ro.happydevs.intellifin.models.security.Token;
 import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.repositories.TokenRepository;
 import ro.happydevs.intellifin.repositories.UserRepository;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 import ro.happydevs.intellifin.utils.security.TokenGenerator;
 
 @Service
@@ -21,6 +22,11 @@ public class TokenService {
 
     @Autowired
     UserRepository userRepository;
+
+
+
+    @Autowired
+    IntelliLogger intelliLogger;
 
     public boolean verifyToken(String code) {
         logger.info("[Verify Token] - Verifying token");

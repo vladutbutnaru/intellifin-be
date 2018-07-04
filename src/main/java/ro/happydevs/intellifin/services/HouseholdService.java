@@ -1,5 +1,7 @@
 package ro.happydevs.intellifin.services;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.Household;
@@ -8,6 +10,7 @@ import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.models.dto.GenericMessageDTO;
 import ro.happydevs.intellifin.repositories.HouseholdMemberRepository;
 import ro.happydevs.intellifin.repositories.HouseholdRepository;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,6 +30,11 @@ public class HouseholdService {
 
     @Autowired
     NotificationService notificationService;
+
+    private static Logger logger = LoggerFactory.getLogger(HouseholdService.class);
+
+    @Autowired
+    IntelliLogger intelliLogger;
 
     public GenericMessageDTO inviteMemberToHousehold(String token, Long userToInviteId){
         //if the invited user is not already in the household

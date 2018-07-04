@@ -1,10 +1,13 @@
 package ro.happydevs.intellifin.services;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.Product;
 import ro.happydevs.intellifin.repositories.ProductRepository;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.util.List;
 
@@ -12,6 +15,11 @@ import java.util.List;
 public class ProductService {
     @Autowired
     ProductRepository productRepository;
+
+    private static Logger logger = LoggerFactory.getLogger(ProductService.class);
+
+    @Autowired
+    IntelliLogger intelliLogger;
 
 
     public boolean createProduct(Product product) {

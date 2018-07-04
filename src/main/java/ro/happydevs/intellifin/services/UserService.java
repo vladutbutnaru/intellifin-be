@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.repositories.UserRepository;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 @Service
 public class UserService {
@@ -17,7 +18,8 @@ public class UserService {
     TokenService tokenService;
     @Autowired
     NotificationService notificationService;
-
+    @Autowired
+    IntelliLogger intelliLogger;
     /**
      * User logins with email and password and returns the token
      *

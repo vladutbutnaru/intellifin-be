@@ -1,12 +1,15 @@
 package ro.happydevs.intellifin.services;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.Account;
 import ro.happydevs.intellifin.models.business.Transaction;
 import ro.happydevs.intellifin.repositories.AccountRepository;
 import ro.happydevs.intellifin.repositories.TransactionRepository;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,6 +29,11 @@ public class TransactionService {
 
     @Autowired
     AccountRepository accountRepository;
+
+    private static Logger logger = LoggerFactory.getLogger(TransactionService.class);
+
+    @Autowired
+    IntelliLogger intelliLogger;
 
     public void createRegularTransaction(Transaction transaction, String token) {
 

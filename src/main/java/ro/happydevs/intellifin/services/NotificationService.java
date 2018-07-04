@@ -1,6 +1,8 @@
 package ro.happydevs.intellifin.services;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.Notification;
@@ -9,6 +11,7 @@ import ro.happydevs.intellifin.repositories.HouseholdRepository;
 import ro.happydevs.intellifin.repositories.NotificationRepository;
 import ro.happydevs.intellifin.repositories.UserRepository;
 import ro.happydevs.intellifin.utils.constants.CONSTANTS;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.util.List;
 
@@ -29,6 +32,11 @@ public class NotificationService {
 
     @Autowired
     HouseholdRepository householdRepository;
+
+    private static Logger logger = LoggerFactory.getLogger(NotificationService.class);
+
+    @Autowired
+    IntelliLogger intelliLogger;
 
 
     public List<Notification> getNotificationsForUser(String token) {

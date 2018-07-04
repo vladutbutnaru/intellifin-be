@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.City;
 import ro.happydevs.intellifin.repositories.CityRepository;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -16,6 +17,9 @@ import java.util.List;
 public class CityService {
     @Autowired
     CityRepository cityRepository;
+
+    @Autowired
+    IntelliLogger intelliLogger;
 
     public List<City> getAll() {
         return cityRepository.findAll();

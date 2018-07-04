@@ -9,6 +9,7 @@ import ro.happydevs.intellifin.models.business.Account;
 import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.repositories.AccountRepository;
 import ro.happydevs.intellifin.repositories.TokenRepository;
+import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ import java.util.List;
 public class AccountService {
 
     private static Logger logger = LoggerFactory.getLogger(AccountService.class);
+
+    @Autowired
+    IntelliLogger intelliLogger;
 
     @Autowired
     TokenRepository tokenRepository;

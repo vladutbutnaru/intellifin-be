@@ -10,8 +10,10 @@ import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.models.dto.GenericMessageDTO;
 import ro.happydevs.intellifin.repositories.HouseholdMemberRepository;
 import ro.happydevs.intellifin.repositories.HouseholdRepository;
+import ro.happydevs.intellifin.repositories.UserRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,37 +21,35 @@ import java.util.List;
 public class HouseholdService {
 
 
+    private static Logger logger = LoggerFactory.getLogger(HouseholdService.class);
     @Autowired
     HouseholdRepository householdRepository;
-
     @Autowired
     HouseholdMemberRepository householdMemberRepository;
-
     @Autowired
     TokenService tokenService;
-
     @Autowired
     NotificationService notificationService;
-
-    private static Logger logger = LoggerFactory.getLogger(HouseholdService.class);
-
     @Autowired
     IntelliLogger intelliLogger;
 
-    public GenericMessageDTO inviteMemberToHousehold(String token, Long userToInviteId){
+    @Autowired
+    UserRepository userRepository;
+
+    public GenericMessageDTO inviteMemberToHousehold(String token, Long userToInviteId) {
         //if the invited user is not already in the household
 
-        if(isUserAlreadyInHousehold(token,userToInviteId)){
-            return new GenericMessageDTO(-1,"Utilizatorul este deja in household",false);
+        if (isUserAlreadyInHousehold(token, userToInviteId)) {
+            return new GenericMessageDTO(-1, "Utilizatorul este deja in household", false);
         }
 
-        if(notificationService.isUserAlreadyInvitedToHousehold(token,tokenService.getUserByToken(token).getId()))
-            return new GenericMessageDTO(-2,"Utilizatorul este deja invitat in household",false);
+        if (notificationService.isUserAlreadyInvitedToHousehold(token, tokenService.getUserByToken(token).getId()))
+            return new GenericMessageDTO(-2, "Utilizatorul este deja invitat in household", false);
 
         //create invitation notification
 
         //get user by token
-        User loggedInUser =tokenService.getUserByToken(token);
+        User loggedInUser = tokenService.getUserByToken(token);
         //find user as household member
         HouseholdMember loggedInMember = householdMemberRepository.findHouseholdMemberByUserId(loggedInUser.getId());
 
@@ -57,31 +57,31 @@ public class HouseholdService {
         Household userHousehold = householdRepository.findById(loggedInMember.getHouseholdId()).get();
 
         //create notification
-        notificationService.createInvitationToHouseholdNotification(userToInviteId,loggedInUser,userHousehold.getId());
+        notificationService.createInvitationToHouseholdNotification(userToInviteId, loggedInUser, userHousehold.getId());
 
-        return new GenericMessageDTO(1,"Invitatia a fost trimisa cu succes!",true);
+        return new GenericMessageDTO(1, "Invitatia a fost trimisa cu succes!", true);
 
     }
 
-    public boolean isUserAlreadyInHousehold(String token, Long userToInviteId){
+    public boolean isUserAlreadyInHousehold(String token, Long userToInviteId) {
         //get user by token
-        User loggedInUser =tokenService.getUserByToken(token);
+        User loggedInUser = tokenService.getUserByToken(token);
         //find user as household member
         HouseholdMember loggedInMember = householdMemberRepository.findHouseholdMemberByUserId(loggedInUser.getId());
 
         //find household
         Household userHousehold = householdRepository.findById(loggedInMember.getHouseholdId()).get();
 
-        for(HouseholdMember member : householdMemberRepository.findHouseholdMembersForHouseholdId(userHousehold.getId())){
-            if(member.getUserId() == userToInviteId){
-            return true;
+        for (HouseholdMember member : householdMemberRepository.findHouseholdMembersForHouseholdId(userHousehold.getId())) {
+            if (member.getUserId() == userToInviteId) {
+                return true;
             }
 
         }
         return false;
     }
 
-    public GenericMessageDTO acceptInviteToHousehold(String token, Long houseHoldId){
+    public GenericMessageDTO acceptInviteToHousehold(String token, Long houseHoldId) {
         //find the user
         User loggedInUser = tokenService.getUserByToken(token);
 
@@ -94,13 +94,13 @@ public class HouseholdService {
 
         //delete the invite notification
 
-        notificationService.deleteHouseholdInviteNotification(token,houseHoldId);
+        notificationService.deleteHouseholdInviteNotification(token, houseHoldId);
 
-        return new GenericMessageDTO(1,"Accepted",true);
+        return new GenericMessageDTO(1, "Accepted", true);
 
     }
 
-    public GenericMessageDTO createHousehold(String token, Household household){
+    public GenericMessageDTO createHousehold(String token, Household household) {
         User loggedInUser = tokenService.getUserByToken(token);
         household.setDeleted(false);
         household = householdRepository.save(household);
@@ -112,15 +112,15 @@ public class HouseholdService {
 
         householdMemberRepository.save(householdMember);
 
-        return new GenericMessageDTO(1,"Household created",true);
+        return new GenericMessageDTO(1, "Household created", true);
 
 
     }
 
-    public List<Household> listHouseholds(String token){
+    public List<Household> getOwnHousehold(String token) {
 
         //get user by token
-        User loggedInUser =tokenService.getUserByToken(token);
+        User loggedInUser = tokenService.getUserByToken(token);
         //find user as household member
         HouseholdMember loggedInMember = householdMemberRepository.findHouseholdMemberByUserId(loggedInUser.getId());
 
@@ -128,11 +128,26 @@ public class HouseholdService {
         try {
             Household userHousehold = householdRepository.findById(loggedInMember.getHouseholdId()).get();
             return Arrays.asList(userHousehold);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
+    }
 
+
+
+    public List<User> getAllMembersOfHouseHold(Long houseHoldId, String token) {
+
+        //get user by token
+        User loggedInUser = tokenService.getUserByToken(token);
+        //find household
+        Household userHousehold = householdRepository.findById(houseHoldId).get();
+
+        List<HouseholdMember> listOfHouseholdMembers = householdMemberRepository.findHouseholdMembersForHouseholdId(houseHoldId);
+        List<User> listOfHouseholdUsers = new ArrayList<>();
+        for(HouseholdMember member : listOfHouseholdMembers){
+            listOfHouseholdUsers.add(userRepository.findById(member.getUserId()).get());
+        }
+        return listOfHouseholdUsers;
 
     }
 }

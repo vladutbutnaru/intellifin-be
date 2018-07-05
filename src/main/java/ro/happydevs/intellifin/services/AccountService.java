@@ -5,12 +5,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.happydevs.intellifin.models.business.Account;
-import ro.happydevs.intellifin.models.business.User;
+import ro.happydevs.intellifin.models.business.*;
+import ro.happydevs.intellifin.models.dto.GenericMessageDTO;
+import ro.happydevs.intellifin.models.reporting.LogLine;
 import ro.happydevs.intellifin.repositories.AccountRepository;
+import ro.happydevs.intellifin.repositories.HouseholdMemberRepository;
 import ro.happydevs.intellifin.repositories.TokenRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,6 +33,14 @@ public class AccountService {
     @Autowired
     TokenService tokenService;
 
+    @Autowired
+    HouseholdService householdService;
+
+    @Autowired
+    HouseholdMemberRepository householdMemberRepository;
+
+    @Autowired
+    TransactionService transactionService;
     /**
      * Creates an account for a user based on a token
      * received from front-end
@@ -44,6 +55,7 @@ public class AccountService {
         account.setUserId(u.getId());
 
         logger.info("[Account Service Create] - Called");
+        intelliLogger.createLog(new LogLine(u.getId(),"[ACCOUNT CREATE] - " + account.toString()));
 
         accountRepository.save(account);
 
@@ -51,18 +63,49 @@ public class AccountService {
 
     }
 
+
+
+    public List<Account> getOwnAccountsForUser(String token){
+        User u = tokenService.getUserByToken(token);
+
+        return accountRepository.findAllAccountsForUser(u.getId());
+
+    }
+
+    public List<Account> getOwnAccountsForUser(Long userId){
+
+        return accountRepository.findAllAccountsForUser(userId);
+
+    }
     /**
-     * List all accounts for a given user
+     * List all accounts for a given user including the ones shared within household
      *
      * @param token
      * @return List<Account>
      */
+
     public List<Account> getAccountsForUser(String token) {
         User u = tokenService.getUserByToken(token);
 
+        List<Account> listOfAccounts = new ArrayList<>();
 
-        return accountRepository.findAllAccountsForUser(u.getId());
+        //own accounts
+        listOfAccounts.addAll( accountRepository.findAllAccountsForUser(u.getId()));
 
+        for(Household household : householdService.getOwnHousehold(token)){
+            for(HouseholdMember householdMember : householdMemberRepository.findHouseholdMembersForHouseholdId(household.getId())){
+                for(Account account : getOwnAccountsForUser(householdMember.getId())){
+                    if(account.isSharedWithHousehold()){
+                        //prefix the household shared accounts
+                        account.setName("[" + householdService.householdRepository.findById(account.getSharedHouseholdId()).get().getName() + "] " + account.getName());
+                        listOfAccounts.add(account);
+                    }
+                }
+            }
+        }
+
+
+        return listOfAccounts;
 
     }
 
@@ -74,6 +117,50 @@ public class AccountService {
      */
     public Account getAccountById(Long accountId) {
         return accountRepository.findById(accountId).get();
+
+    }
+    /**
+     * Updates account information by account ID
+     *
+     * @param account
+     * @param token
+     * @return nothing
+     */
+    public void updateAccount(Account account, String token){
+        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(),"[ACCOUNT UPDATE] - " + account.toString()));
+        accountRepository.save(account);
+
+    }
+    /**
+     * Marks an account as deleted by account ID
+     * Marks all transactions for the respective account as deleted
+     *
+     * @param accountId
+     * @param token
+     * @return GenericMessageDTO
+     */
+    public GenericMessageDTO deleteAccount(Long accountId, String token){
+        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(),"[ACCOUNT DELETE] - " + accountId));
+
+        Account accountToDelete = accountRepository.findById(accountId).get();
+        accountToDelete.setDeleted(true);
+        accountRepository.save(accountToDelete);
+
+        List<Transaction> transactionsForTheAccount = transactionService.findAllTransactionsForAccountId(accountToDelete.getId());
+        for(Transaction t : transactionsForTheAccount){
+
+            transactionService.deleteTransaction(t);
+        }
+
+        return new GenericMessageDTO(1,"Account and transactions deleted successfully!",true);
+
+
+
+
+
+
+
+
 
     }
 

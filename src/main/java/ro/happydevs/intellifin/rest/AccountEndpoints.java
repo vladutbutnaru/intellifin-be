@@ -1,5 +1,6 @@
 package ro.happydevs.intellifin.rest;
 
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class AccountEndpoints {
 
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ApiOperation("Create a new account")
     public ResponseEntity<?> createAccount(@RequestBody Account account,
                                            @RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
@@ -34,6 +36,7 @@ public class AccountEndpoints {
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @ApiOperation("Get a list of all user's accounts and shared HouseHold accounts")
     public ResponseEntity<?> listAccounts(@RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
 
@@ -41,19 +44,39 @@ public class AccountEndpoints {
             return ResponseEntity.ok(accountService.getAccountsForUser(token));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
-
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @ApiOperation("Get information of a User's account based on the ID")
     public ResponseEntity<?> getAccount(@RequestHeader("Authentication") String token,
                                         @RequestParam(value = "id") Long id) {
         if (tokenService.verifyToken(token)) {
-
-
             return ResponseEntity.ok(accountService.getAccountById(id));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+    }
 
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ApiOperation("Update a User's account")
+    public ResponseEntity<?> updateAccount(@RequestBody Account account,
+                                           @RequestHeader("Authentication") String token) {
+        if (tokenService.verifyToken(token)) {
+
+            accountService.updateAccount(account, token);
+            return ResponseEntity.ok(account);
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @ApiOperation("Delete a User's account and the corresponding transactions")
+    public ResponseEntity<?> deleteAccount(@RequestHeader("Authentication") String token,
+                                        @RequestParam(value = "id") Long id) {
+        if (tokenService.verifyToken(token)) {
+            return ResponseEntity.ok(accountService.deleteAccount(id,token));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
     }
 
 }

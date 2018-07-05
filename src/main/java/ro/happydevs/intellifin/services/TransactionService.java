@@ -1,37 +1,35 @@
 package ro.happydevs.intellifin.services;
 
 
+import org.apache.commons.lang.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.Account;
 import ro.happydevs.intellifin.models.business.Transaction;
+import ro.happydevs.intellifin.models.reporting.LogLine;
 import ro.happydevs.intellifin.repositories.AccountRepository;
 import ro.happydevs.intellifin.repositories.TransactionRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class TransactionService {
 
+    private static Logger logger = LoggerFactory.getLogger(TransactionService.class);
     @Autowired
     TransactionRepository transactionRepository;
-
     @Autowired
     TokenService tokenService;
-
     @Autowired
     AccountService accountService;
-
     @Autowired
     AccountRepository accountRepository;
-
-    private static Logger logger = LoggerFactory.getLogger(TransactionService.class);
-
     @Autowired
     IntelliLogger intelliLogger;
 
@@ -44,22 +42,24 @@ public class TransactionService {
 
 
         Account account = accountService.getAccountById(transaction.getAccountId());
-        if(transaction.isEarning())
-             account.setSold(account.getSold()+transaction.getAmount());
+        if (transaction.isEarning())
+            account.setSold(account.getSold() + transaction.getAmount());
         else
-            account.setSold(account.getSold()-transaction.getAmount());
+            account.setSold(account.getSold() - transaction.getAmount());
 
         accountRepository.save(account);
 
         transactionRepository.save(transaction);
 
+        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(),"[CREATED] - " + transaction.toString()));
+
 
     }
 
-    public ArrayList<Transaction> findAllTransactionsForUser(String token){
-      ArrayList<Transaction> transactions = new ArrayList<>();
+    public ArrayList<Transaction> findAllTransactionsForUser(String token) {
+        ArrayList<Transaction> transactions = new ArrayList<>();
 
-        for(Account a : accountService.getAccountsForUser(token)){
+        for (Account a : accountService.getAccountsForUser(token)) {
             transactions.addAll(findAllTransactionsForAccountId(a.getId()));
 
         }
@@ -67,8 +67,46 @@ public class TransactionService {
 
     }
 
-    public List<Transaction> findAllTransactionsForAccountId(Long accountId){
+    public List<Transaction> findAllTransactionsForAccountId(Long accountId) {
         return transactionRepository.findAllForAccount(accountId);
 
     }
+
+    public void deleteTransaction(Transaction t){
+        t.setDeleted(true);
+        transactionRepository.save(t);
+
+    }
+
+    public List<Transaction> getTodayTransactions(String token){
+        Date today = new Date();
+        Date todayMorning = DateUtils.truncate(today, Calendar.DATE);
+        Date todayEvening = DateUtils.addSeconds(DateUtils.addMinutes(DateUtils.addHours(todayMorning, 23), 59), 59);
+
+        List<Transaction> transactions = new ArrayList<Transaction>();
+        for(Account a : accountService.getAccountsForUser(token)){
+            transactions.addAll(transactionRepository.findAllForAccountBetweenStartEndDates(a.getId(),todayMorning,todayEvening));
+
+        }
+        return transactions;
+
+    }
+
+    public List<Transaction> getMonthlyTransactions(String token){
+        Date firstOfMonth = new Date();
+        firstOfMonth.setDate(0);
+        Date lastOfMonth = new Date();
+        lastOfMonth = (DateUtils.addMonths(firstOfMonth,1));
+
+
+        List<Transaction> transactions = new ArrayList<Transaction>();
+        for(Account a : accountService.getAccountsForUser(token)){
+            transactions.addAll(transactionRepository.findAllForAccountBetweenStartEndDates(a.getId(),firstOfMonth,lastOfMonth));
+
+        }
+        return transactions;
+
+    }
+
+
 }

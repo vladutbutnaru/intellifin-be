@@ -9,7 +9,7 @@ import ro.happydevs.intellifin.models.business.HouseholdMember;
 import java.util.List;
 
 @Repository
-public interface HouseholdMemberRepository  extends JpaRepository<HouseholdMember,Long>{
+public interface HouseholdMemberRepository extends JpaRepository<HouseholdMember, Long> {
 
     @Query("select hm from HouseholdMember hm where hm.userId = :userId")
     HouseholdMember findHouseholdMemberByUserId(@Param("userId") Long userId);

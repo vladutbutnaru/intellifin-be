@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.models.reporting;
+package ro.happydevs.intellifin.models.business;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -6,8 +6,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "intelli_logs")
-public class LogLine {
+@Table(name = "intelli_activity")
+public class Activity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,13 +21,10 @@ public class LogLine {
 
     private Long userId;
 
-    private String action;
-
-
-    public LogLine(Long userId, String action) {
-        this.userId = userId;
-        this.action = action;
-    }
+    private String icon;
+    private String link;
+    private String title;
+    private String description;
 
     public Long getId() {
         return id;
@@ -60,11 +58,35 @@ public class LogLine {
         this.userId = userId;
     }
 
-    public String getAction() {
-        return action;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

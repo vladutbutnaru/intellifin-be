@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.User;
+import ro.happydevs.intellifin.models.reporting.LogLine;
 import ro.happydevs.intellifin.repositories.UserRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
@@ -20,6 +21,7 @@ public class UserService {
     NotificationService notificationService;
     @Autowired
     IntelliLogger intelliLogger;
+
     /**
      * User logins with email and password and returns the token
      *
@@ -31,6 +33,7 @@ public class UserService {
 
         User loggedInUser = userRepository.findByEmailAndPassword(email, password);
         if (loggedInUser != null) {
+            intelliLogger.createLog(new LogLine(loggedInUser.getId(), "[LOGGED IN]"));
             return tokenService.createToken(loggedInUser.getId());
         }
 
@@ -68,7 +71,6 @@ public class UserService {
     }
 
 
-
     /**
      * Returns user information based on a email received
      * from front-end
@@ -76,7 +78,7 @@ public class UserService {
      * @param email
      * @return User
      */
-    public User getUserForEmail(String email){
+    public User getUserForEmail(String email) {
         return userRepository.findByEmail(email);
     }
 }

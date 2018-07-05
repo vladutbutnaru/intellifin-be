@@ -13,11 +13,9 @@ import java.util.List;
 
 @Service
 public class ProductPriceService {
+    private static Logger logger = LoggerFactory.getLogger(ProductPriceService.class);
     @Autowired
     ProductPriceRepository productPriceRepository;
-
-    private static Logger logger = LoggerFactory.getLogger(ProductPriceService.class);
-
     @Autowired
     IntelliLogger intelliLogger;
 

@@ -36,7 +36,7 @@ public class TransactionEndpoints {
             for (Account account : accountService.getAccountsForUser(token)) {
                 if (account.getId() == transaction.getAccountId()) {
                     transactionService.createRegularTransaction(transaction, token);
-                    return ResponseEntity.ok(new GenericMessageDTO(1,"Transaction created!",true));
+                    return ResponseEntity.ok(new GenericMessageDTO(1, "Transaction created!", true));
 
                 }
             }
@@ -45,13 +45,14 @@ public class TransactionEndpoints {
 
 
     }
+
     @RequestMapping(value = "/transaction/list/all", method = RequestMethod.GET)
     public ResponseEntity<?> listAllTransactions(
             @RequestHeader("Authentication") String token
     ) {
 
         if (tokenService.verifyToken(token)) {
-           return ResponseEntity.ok(transactionService.findAllTransactionsForUser(token));
+            return ResponseEntity.ok(transactionService.findAllTransactionsForUser(token));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
@@ -69,8 +70,6 @@ public class TransactionEndpoints {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
     }
-
-
 
 
 }

@@ -5,8 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ro.happydevs.intellifin.models.security.Token;
 import ro.happydevs.intellifin.models.business.User;
+import ro.happydevs.intellifin.models.security.Token;
 import ro.happydevs.intellifin.repositories.TokenRepository;
 import ro.happydevs.intellifin.repositories.UserRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
@@ -24,16 +24,12 @@ public class TokenService {
     UserRepository userRepository;
 
 
-
     @Autowired
     IntelliLogger intelliLogger;
 
     public boolean verifyToken(String code) {
         logger.info("[Verify Token] - Verifying token");
-        if (tokenRepository.findByCode(code) != null)
-            return true;
-
-        return false;
+        return tokenRepository.findByCode(code) != null;
 
     }
 

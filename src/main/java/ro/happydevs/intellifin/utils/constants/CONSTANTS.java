@@ -27,5 +27,4 @@ public class CONSTANTS {
     public static final String NOTIFICATION_TYPE_HOUSEHOLD_INVITE = "HOUSEHOLD_INVITE";
 
 
-
 }

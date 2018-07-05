@@ -11,7 +11,7 @@ public class IntelliLogger {
     @Autowired
     LogLineRepository logLineRepository;
 
-    public void createLog(LogLine logLine){
+    public void createLog(LogLine logLine) {
         logLineRepository.save(logLine);
 
     }

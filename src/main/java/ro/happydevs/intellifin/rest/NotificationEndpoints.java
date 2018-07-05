@@ -33,7 +33,7 @@ public class NotificationEndpoints {
                                            @RequestParam("id") Long id) {
         if (tokenService.verifyToken(token)) {
             notificationService.markNotificationAsRead(id);
-            return ResponseEntity.ok(new GenericMessageDTO(1,"Marked as read", true));
+            return ResponseEntity.ok(new GenericMessageDTO(1, "Marked as read", true));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 

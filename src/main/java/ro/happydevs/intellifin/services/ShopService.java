@@ -14,14 +14,11 @@ import java.util.ArrayList;
 @Service
 public class ShopService {
 
+    private static Logger logger = LoggerFactory.getLogger(ShopService.class);
     @Autowired
     ShopRepository shopRepository;
-
     @Autowired
     TokenService tokenService;
-
-    private static Logger logger = LoggerFactory.getLogger(ShopService.class);
-
     @Autowired
     IntelliLogger intelliLogger;
 

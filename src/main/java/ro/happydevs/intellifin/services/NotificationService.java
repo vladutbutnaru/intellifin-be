@@ -18,23 +18,17 @@ import java.util.List;
 @Service
 public class NotificationService {
 
+    private static Logger logger = LoggerFactory.getLogger(NotificationService.class);
     @Autowired
     NotificationRepository notificationRepository;
-
     @Autowired
     UserService userService;
-
     @Autowired
     TokenService tokenService;
-
     @Autowired
     UserRepository userRepository;
-
     @Autowired
     HouseholdRepository householdRepository;
-
-    private static Logger logger = LoggerFactory.getLogger(NotificationService.class);
-
     @Autowired
     IntelliLogger intelliLogger;
 
@@ -65,20 +59,19 @@ public class NotificationService {
 
     }
 
-    public boolean isUserAlreadyInvitedToHousehold(String token, Long invitingMemberId){
+    public boolean isUserAlreadyInvitedToHousehold(String token, Long invitingMemberId) {
 
-        for(Notification n : getNotificationsForUser(token)){
-            if(n.getType().equals(CONSTANTS.NOTIFICATION_TYPE_HOUSEHOLD_INVITE) && n.getInvitingMemberId() == invitingMemberId)
+        for (Notification n : getNotificationsForUser(token)) {
+            if (n.getType().equals(CONSTANTS.NOTIFICATION_TYPE_HOUSEHOLD_INVITE) && n.getInvitingMemberId() == invitingMemberId)
                 return true;
 
         }
         return false;
 
 
-
     }
 
-    public void createInvitationToHouseholdNotification(Long userToInviteId, User invitingUser, Long houseHoldId){
+    public void createInvitationToHouseholdNotification(Long userToInviteId, User invitingUser, Long houseHoldId) {
 
 
         Notification notification = new Notification();
@@ -94,25 +87,24 @@ public class NotificationService {
         createNotificationForUser(notification);
 
 
-
     }
 
-    public void deleteHouseholdInviteNotification(String token, Long householdId){
-        for(Notification n : getNotificationsForUser(token)){
-            if(n.getInviteId() == householdId){
+    public void deleteHouseholdInviteNotification(String token, Long householdId) {
+        for (Notification n : getNotificationsForUser(token)) {
+            if (n.getInviteId() == householdId) {
                 notificationRepository.delete(n);
                 return;
             }
 
         }
     }
-    public void markNotificationAsRead(Long notificationId){
+
+    public void markNotificationAsRead(Long notificationId) {
         Notification notification = notificationRepository.findById(notificationId).get();
         notification.setViewed(true);
         notificationRepository.save(notification);
 
     }
-
 
 
 }

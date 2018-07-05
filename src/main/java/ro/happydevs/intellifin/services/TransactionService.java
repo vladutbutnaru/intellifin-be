@@ -7,9 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.Account;
+import ro.happydevs.intellifin.models.business.ProductPrice;
 import ro.happydevs.intellifin.models.business.Transaction;
+import ro.happydevs.intellifin.models.dto.GenericMessageDTO;
+import ro.happydevs.intellifin.models.nonpersistent.TransactionWithProducts;
 import ro.happydevs.intellifin.models.reporting.LogLine;
 import ro.happydevs.intellifin.repositories.AccountRepository;
+import ro.happydevs.intellifin.repositories.ProductPriceRepository;
 import ro.happydevs.intellifin.repositories.TransactionRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
@@ -33,7 +37,13 @@ public class TransactionService {
     @Autowired
     IntelliLogger intelliLogger;
 
-    public void createRegularTransaction(Transaction transaction, String token) {
+    @Autowired
+    ProductPriceRepository productPriceRepository;
+    @Autowired
+    ProductPriceService productPriceService;
+
+
+    public Transaction createRegularTransaction(Transaction transaction, String token) {
 
         transaction.setUserId(tokenService.getUserByToken(token).getId());
         transaction.setRecurring(false);
@@ -49,9 +59,11 @@ public class TransactionService {
 
         accountRepository.save(account);
 
-        transactionRepository.save(transaction);
+        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(),"[CREATED] - " + transaction.getId()));
 
-        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(),"[CREATED] - " + transaction.toString()));
+        return transactionRepository.save(transaction);
+
+
 
 
     }
@@ -107,6 +119,20 @@ public class TransactionService {
         return transactions;
 
     }
+
+    public GenericMessageDTO createTransactionWithProducts(TransactionWithProducts transactionWithProducts, String token){
+            // create the transaction as regular one
+            Transaction savedTransaction = createRegularTransaction(transactionWithProducts.getTransaction(), token);
+
+            //save the product prices
+            for(ProductPrice productPrice : transactionWithProducts.getProductPrices()){
+                productPrice.setDeleted(false);
+                productPriceRepository.save(productPrice);
+            }
+
+            return new GenericMessageDTO(1,"Transaction with products created succesfully", true);
+    }
+
 
 
 }

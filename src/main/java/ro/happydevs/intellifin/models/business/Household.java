@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.models.security;
+package ro.happydevs.intellifin.models.business;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -6,9 +6,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "intelli_token")
-public class Token {
-
+@Table(name = "intelli_household")
+public class Household {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,18 +18,8 @@ public class Token {
 
     private boolean deleted;
 
-    private Long userId;
-    private String code;
-    private boolean valid;
-    private int lifeSpan;
-
-    public int getLifeSpan() {
-        return lifeSpan;
-    }
-
-    public void setLifeSpan(int lifeSpan) {
-        this.lifeSpan = lifeSpan;
-    }
+    private String name;
+    private String address;
 
     public Long getId() {
         return id;
@@ -56,27 +45,19 @@ public class Token {
         this.deleted = deleted;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getName() {
+        return name;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCode() {
-        return code;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public boolean isValid() {
-        return valid;
-    }
-
-    public void setValid(boolean valid) {
-        this.valid = valid;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

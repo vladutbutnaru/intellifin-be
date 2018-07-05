@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ro.happydevs.intellifin.models.business.Account;
 import ro.happydevs.intellifin.models.business.Transaction;
 import ro.happydevs.intellifin.models.dto.GenericMessageDTO;
+import ro.happydevs.intellifin.models.nonpersistent.TransactionWithProducts;
 import ro.happydevs.intellifin.services.AccountService;
 import ro.happydevs.intellifin.services.TokenService;
 import ro.happydevs.intellifin.services.TransactionService;
@@ -32,19 +33,31 @@ public class TransactionEndpoints {
     ) {
 
         if (tokenService.verifyToken(token)) {
-            //check if the account belongs to the user
-            for (Account account : accountService.getAccountsForUser(token)) {
-                if (account.getId() == transaction.getAccountId()) {
+
                     transactionService.createRegularTransaction(transaction, token);
                     return ResponseEntity.ok(new GenericMessageDTO(1, "Transaction created!", true));
 
-                }
-            }
+
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
 
     }
+
+    @RequestMapping(value = "/transaction/withproducts/add", method = RequestMethod.POST)
+    public ResponseEntity<?> addRegularTransaction(
+            @RequestHeader("Authentication") String token,
+            @RequestBody TransactionWithProducts transaction
+    ) {
+
+        if (tokenService.verifyToken(token)) {
+            return ResponseEntity.ok(transactionService.createTransactionWithProducts(transaction,token));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+
+
+    }
+
 
     @RequestMapping(value = "/transaction/list/all", method = RequestMethod.GET)
     public ResponseEntity<?> listAllTransactions(

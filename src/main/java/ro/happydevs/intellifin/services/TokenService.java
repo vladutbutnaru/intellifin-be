@@ -12,6 +12,8 @@ import ro.happydevs.intellifin.repositories.UserRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 import ro.happydevs.intellifin.utils.security.TokenGenerator;
 
+import java.util.List;
+
 @Service
 public class TokenService {
 
@@ -29,6 +31,10 @@ public class TokenService {
 
     public boolean verifyToken(String code) {
         logger.info("[Verify Token] - Verifying token");
+
+        if(tokenRepository.findByCode(code)!=null){
+
+        }
         return tokenRepository.findByCode(code) != null;
 
     }
@@ -45,10 +51,16 @@ public class TokenService {
         token.setValid(true);
         token.setUserId(userId);
         token.setDeleted(false);
+        //24 hours lifespan
+        token.setLifeSpan(60*60*24);
+
         tokenRepository.save(token);
         return token.getCode();
 
 
     }
 
+    public List<Token> getValidTokens(){
+        return tokenRepository.findValidTokens();
+    }
 }

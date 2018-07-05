@@ -54,10 +54,9 @@ public class AccountService {
 
         account.setUserId(u.getId());
 
-        logger.info("[Account Service Create] - Called");
-        intelliLogger.createLog(new LogLine(u.getId(),"[ACCOUNT CREATE] - " + account.toString()));
+        account =   accountRepository.save(account);
 
-        accountRepository.save(account);
+        intelliLogger.createAccountLog(account.getName(),u.getId(), account.getId());
 
         return true;
 
@@ -68,12 +67,13 @@ public class AccountService {
     public List<Account> getOwnAccountsForUser(String token){
         User u = tokenService.getUserByToken(token);
 
+        intelliLogger.createLog(new LogLine(u.getId(),"LIST_OWN_ACCOUNTS"));
         return accountRepository.findAllAccountsForUser(u.getId());
 
     }
 
     public List<Account> getOwnAccountsForUser(Long userId){
-
+        intelliLogger.createLog(new LogLine(userId,"LIST_OWN_ACCOUNTS"));
         return accountRepository.findAllAccountsForUser(userId);
 
     }
@@ -103,7 +103,7 @@ public class AccountService {
                 }
             }
         }
-
+        intelliLogger.createLog(new LogLine(u.getId(),"LIST_ALL_ACCOUNTS"));
 
         return listOfAccounts;
 
@@ -116,6 +116,7 @@ public class AccountService {
      * @return Account
      */
     public Account getAccountById(Long accountId) {
+
         return accountRepository.findById(accountId).get();
 
     }
@@ -127,7 +128,8 @@ public class AccountService {
      * @return nothing
      */
     public void updateAccount(Account account, String token){
-        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(),"[ACCOUNT UPDATE] - " + account.toString()));
+        intelliLogger.updateAccountLog(account.getName(),tokenService.getUserByToken(token).getId(),account.getId());
+
         accountRepository.save(account);
 
     }
@@ -151,15 +153,8 @@ public class AccountService {
 
             transactionService.deleteTransaction(t);
         }
-
+        intelliLogger.deleteAccountLog(accountToDelete.getName(),tokenService.getUserByToken(token).getId());
         return new GenericMessageDTO(1,"Account and transactions deleted successfully!",true);
-
-
-
-
-
-
-
 
 
     }

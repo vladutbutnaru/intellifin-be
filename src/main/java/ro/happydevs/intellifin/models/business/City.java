@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.models.reporting;
+package ro.happydevs.intellifin.models.business;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -6,28 +6,27 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "intelli_logs")
-public class LogLine {
+@Table(name = "intelli_city")
+public class City {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date createdAt = new Date();
+    private Date createdAt;
 
     private boolean deleted;
 
-    private Long userId;
+    private String name;
 
-    @Lob
-    @Column( length = 10000000 )
-    private String action;
+    public String getName() {
+        return name;
+    }
 
-
-    public LogLine(Long userId, String action) {
-        this.userId = userId;
-        this.action = action;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -52,21 +51,5 @@ public class LogLine {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
     }
 }

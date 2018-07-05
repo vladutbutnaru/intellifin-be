@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.models.security;
+package ro.happydevs.intellifin.models.business;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -6,9 +6,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "intelli_token")
-public class Token {
-
+@Table(name = "intelli_product")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,17 +18,19 @@ public class Token {
 
     private boolean deleted;
 
-    private Long userId;
-    private String code;
-    private boolean valid;
-    private int lifeSpan;
 
-    public int getLifeSpan() {
-        return lifeSpan;
+    private String name;
+    private String imagePath;
+    private Long category;
+
+    private String um;
+
+    public String getUm() {
+        return um;
     }
 
-    public void setLifeSpan(int lifeSpan) {
-        this.lifeSpan = lifeSpan;
+    public void setUm(String um) {
+        this.um = um;
     }
 
     public Long getId() {
@@ -56,27 +57,27 @@ public class Token {
         this.deleted = deleted;
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getName() {
+        return name;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCode() {
-        return code;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
-    public boolean isValid() {
-        return valid;
+    public Long getCategory() {
+        return category;
     }
 
-    public void setValid(boolean valid) {
-        this.valid = valid;
+    public void setCategory(Long category) {
+        this.category = category;
     }
 }

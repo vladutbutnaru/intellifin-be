@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class TokenGenerator {
 
-    private static RandomString session = new RandomString();
+    private static RandomString session = new RandomString(50);
     private static Logger logger = LoggerFactory.getLogger(TokenGenerator.class);
 
     public static String generateToken() {

@@ -107,7 +107,7 @@ public class TransactionService {
     public List<Transaction> getMonthlyTransactions(String token){
         Date firstOfMonth = new Date();
         firstOfMonth.setDate(0);
-        Date lastOfMonth = new Date();
+        Date lastOfMonth;
         lastOfMonth = (DateUtils.addMonths(firstOfMonth,1));
 
 
@@ -127,11 +127,15 @@ public class TransactionService {
             //save the product prices
             for(ProductPrice productPrice : transactionWithProducts.getProductPrices()){
                 productPrice.setDeleted(false);
+                productPrice.setTransactionId(savedTransaction.getId());
                 productPriceRepository.save(productPrice);
             }
 
             return new GenericMessageDTO(1,"Transaction with products created succesfully", true);
     }
+
+
+
 
 
 

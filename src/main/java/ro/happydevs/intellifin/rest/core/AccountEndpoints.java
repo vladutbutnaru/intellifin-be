@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.rest;
+package ro.happydevs.intellifin.rest.core;
 
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import ro.happydevs.intellifin.models.business.Account;
 import ro.happydevs.intellifin.services.AccountService;
 import ro.happydevs.intellifin.services.TokenService;
+
+
 
 @RestController
 @CrossOrigin(value = "*")

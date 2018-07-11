@@ -5,6 +5,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 3
+ @Title: Notification Entity Bean
+ @Description: Representation of a notification generated for a single user
+ @Links: User
+
+ */
+
 @Entity
 @Table(name = "intelli_notification")
 public class Notification {

@@ -7,6 +7,16 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 9
+ @Title: User Entity Bean
+ @Description: Representation of an User inside IntelliFin Platform
+ @Links: City
+
+ */
+
 @Entity
 @Table(name = "intelli_user")
 public class User {

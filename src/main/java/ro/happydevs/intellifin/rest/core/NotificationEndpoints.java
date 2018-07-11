@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.rest;
+package ro.happydevs.intellifin.rest.core;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

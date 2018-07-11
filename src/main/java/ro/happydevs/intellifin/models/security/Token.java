@@ -4,6 +4,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 2
+ @Title: Entity Bean that represents an Access Token inside IntelliFin
+ @Description: The access token is generated for every Login call inside or outside IntelliFin
+ @Links: User
+
+ */
 
 @Entity
 @Table(name = "intelli_token")

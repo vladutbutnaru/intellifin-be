@@ -5,6 +5,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 3
+ @Title: Log Line Entity Bean
+ @Description: A class that registers all actions made inside IntelliFin or Third Parties
+ @Links: User
+
+ */
+
 @Entity
 @Table(name = "intelli_logs")
 public class LogLine {

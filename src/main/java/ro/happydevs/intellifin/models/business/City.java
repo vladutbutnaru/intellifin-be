@@ -5,6 +5,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 1
+ @Title: City Entity Bean
+ @Description: Representation of a real world City
+ @Links: none
+
+ */
+
 @Entity
 @Table(name = "intelli_city")
 public class City {

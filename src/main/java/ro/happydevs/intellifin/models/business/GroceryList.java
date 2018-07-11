@@ -5,6 +5,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 2
+ @Title: Grocery List Entity Bean
+ @Description: Representation of a collection of Products that a user can schedule to buy
+ @Links: User
+
+ */
 @Entity
 @Table(name = "intelli_grocery_list")
 public class GroceryList {

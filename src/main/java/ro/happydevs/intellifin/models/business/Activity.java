@@ -5,6 +5,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 1
+ @Title: Activity Entity Bean
+ @Description: Representation of a certain user activity that he executes on the platform
+ @Links: User
+
+ */
 @Entity
 @Table(name = "intelli_activity")
 public class Activity {

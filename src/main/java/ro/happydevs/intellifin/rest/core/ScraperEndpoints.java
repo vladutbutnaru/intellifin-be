@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.rest;
+package ro.happydevs.intellifin.rest.core;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

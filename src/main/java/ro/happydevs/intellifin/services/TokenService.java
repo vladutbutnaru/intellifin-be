@@ -33,7 +33,7 @@ public class TokenService {
         logger.info("[Verify Token] - Verifying token");
 
         if(tokenRepository.findByCode(code)!=null){
-
+            refreshToken(code);
         }
         return tokenRepository.findByCode(code) != null;
 
@@ -62,5 +62,13 @@ public class TokenService {
 
     public List<Token> getValidTokens(){
         return tokenRepository.findValidTokens();
+    }
+
+    public void refreshToken(String token){
+        Token t = tokenRepository.findByCode(token);
+        if(t!=null){
+            t.setLifeSpan(60*60*24);
+            tokenRepository.save(t);
+        }
     }
 }

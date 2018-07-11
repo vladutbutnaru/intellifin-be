@@ -6,6 +6,15 @@ import ro.happydevs.intellifin.models.reporting.LogLine;
 import ro.happydevs.intellifin.repositories.LogLineRepository;
 import ro.happydevs.intellifin.utils.constants.CONSTANTS;
 import ro.happydevs.intellifin.utils.factory.ActivityFactory;
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 2
+ @Title: Spring Component for Logging
+ @Description: Provides logging functions for system and platform events
+ @Links: none
+
+ */
 
 @Component
 public class IntelliLogger {

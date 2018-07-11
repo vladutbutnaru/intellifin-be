@@ -4,7 +4,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 4
+ @Title: Generic Bean
+ @Description: Representation of a generic entity
+ @Links: none
 
+ */
+
+//TODO: TO BE REMOVED
 public class GenericModel {
     private int id;
 

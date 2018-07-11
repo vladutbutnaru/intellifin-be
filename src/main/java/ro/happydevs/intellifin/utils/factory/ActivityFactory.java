@@ -7,6 +7,16 @@ import ro.happydevs.intellifin.repositories.ActivityRepository;
 
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 1
+ @Title: Spring Factory Component for Activity Bean
+ @Description: Provides automatic generation of instantiating and managing Activity beans inside IntelliFin
+ @Links: none
+
+ */
+
 @Component
 public class ActivityFactory {
 

@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.rest;
+package ro.happydevs.intellifin.rest.core;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,7 @@ public class UserEndpoints {
     private TokenService tokenService;
 
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login",  method = RequestMethod.POST)
     public ResponseEntity<UserLoginDTO> loginUser(
             @RequestParam(value = "email") String email,
             @RequestParam(value = "password") String password

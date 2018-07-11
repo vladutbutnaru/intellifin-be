@@ -6,6 +6,16 @@ import org.springframework.stereotype.Component;
 import ro.happydevs.intellifin.models.security.Token;
 import ro.happydevs.intellifin.repositories.TokenRepository;
 import ro.happydevs.intellifin.services.TokenService;
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 3
+ @Title: Spring Component Scheduler
+ @Description: The generic Scheduler class that provides recurrent actions inside IntelliFin platform
+ @Links: none
+
+ */
+
 
 @Component
 public class IntelliScheduler {
@@ -21,13 +31,17 @@ public class IntelliScheduler {
     @Scheduled(fixedRate = 1000)
     public void expireTokens(){
         for(Token t : tokenService.getValidTokens() ){
+
             if(t.getLifeSpan() == 1){
                 t.setLifeSpan(0);
                 t.setValid(false);
                 tokenRepository.save(t);
+
             }
             else{
                 t.setLifeSpan(t.getLifeSpan() - 1);
+                tokenRepository.save(t);
+
             }
 
         }

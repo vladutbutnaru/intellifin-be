@@ -5,6 +5,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 3
+ @Title: Product Price Entity Bean
+ @Description: Representation of a product price based on a previous purchase
+ @Links: Product, Shop
+
+ */
+
 @Entity
 @Table(name = "intelli_product_price")
 public class ProductPrice {
@@ -22,6 +32,15 @@ public class ProductPrice {
     private Long productId;
     private double price;
     private Long shopId;
+    private Long transactionId;
+
+    public Long getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(Long transactionId) {
+        this.transactionId = transactionId;
+    }
 
     public Long getId() {
         return id;

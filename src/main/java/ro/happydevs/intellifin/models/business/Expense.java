@@ -6,6 +6,16 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 14
+ @Title: Expense Entity Bean
+ @Description: Representation of an expense
+ @Links: User, Account, Currency, CONSTANTS
+
+ */
+
 @Entity
 @Table(name = "intelli_expense")
 public class Expense {

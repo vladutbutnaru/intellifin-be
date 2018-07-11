@@ -5,6 +5,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ @Author: Vlad Butnaru
+ @Version: 1.0
+ @Revision: 1
+ @Title: Household Entity Bean
+ @Description: Representation of a collection of users that share the same household eg. Family
+ @Links: none
+
+ */
+
 @Entity
 @Table(name = "intelli_household")
 public class Household {

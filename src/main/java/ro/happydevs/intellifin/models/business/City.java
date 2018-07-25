@@ -63,4 +63,20 @@ public class City {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
+    public City(){
+
+    }
+    public City(String name){
+        this();
+        System.out.println(name);
+
+    }
+
+    public City(String name, boolean deleted){
+        this(name);
+        if(deleted)
+            System.out.println("sters");
+    }
+
 }

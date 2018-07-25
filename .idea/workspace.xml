@@ -5,70 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dbd37b3-d50e-4046-928e-2a4368323e74" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/intellisight/compute/IntelliSightWorker.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/GroceryListItemRepository.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/GroceryListRepository.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/GroceryListEndpoints.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/intellisight/IntelliSightEndpoints.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/GroceryListService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/init/DummyData.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/scrapers/emag/ExceptiaMea.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/intellifin.iml" afterPath="$PROJECT_DIR$/intellifin.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Account.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Account.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Activity.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Activity.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Category.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Category.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/City.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/City.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Expense.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Expense.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/GenericModel.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/GenericModel.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/GroceryList.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/GroceryList.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/GroceryListItem.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/GroceryListItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Household.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Household.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/HouseholdMember.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/HouseholdMember.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Notification.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Notification.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Product.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Product.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/ProductPrice.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/ProductPrice.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Shop.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Shop.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Transaction.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Transaction.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/User.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/nonpersistent/TransactionWithProducts.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/nonpersistent/TransactionWithProducts.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/reporting/LogLine.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/reporting/LogLine.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/security/Token.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/security/Token.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/ProductPriceRepository.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/ProductPriceRepository.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/AccountEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/AccountEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/CityEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/CityEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/HouseholdEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/HouseholdEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/NotificationEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/NotificationEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/ProductEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/ProductEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/ProductPriceEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/ProductPriceEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/ScraperEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/ScraperEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/ShopEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/ShopEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/StatisticsEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/StatisticsEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/TransactionEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/TransactionEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/UserEndpoints.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/core/UserEndpoints.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/schedule/IntelliScheduler.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/schedule/IntelliScheduler.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/ProductPriceService.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/ProductPriceService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/TokenService.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/TokenService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/TransactionService.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/TransactionService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/factory/ActivityFactory.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/factory/ActivityFactory.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/reporting/IntelliLogger.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/reporting/IntelliLogger.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/security/RandomString.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/security/RandomString.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/security/TokenGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/security/TokenGenerator.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/IntellifinApplication.class" afterPath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/IntellifinApplication.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/TokenRepository.class" afterPath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/TokenRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/rest/AccountEndpoints.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/rest/CityEndpoints.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/rest/NotificationEndpoints.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/rest/ProductEndpoints.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/rest/ScraperEndpoints.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/rest/TransactionEndpoints.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/rest/UserEndpoints.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/AccountService.class" afterPath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/AccountService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/TokenService.class" afterPath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/TokenService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/TransactionService.class" afterPath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/TransactionService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/utils/constants/CONSTANTS.class" afterPath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/utils/constants/CONSTANTS.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/utils/security/TokenGenerator.class" afterPath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/utils/security/TokenGenerator.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/IntellifinApplication.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/models/dto/UserLoginDTO.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/AccountRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/CityRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/NotificationRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/ProductPriceRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/ProductRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/TokenRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/TransactionRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/repositories/UserRepository.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/scrapers/emag/EmagScraper.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/AccountService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/CityService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/NotificationService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/ProductPriceService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/ProductService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/TokenService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/TransactionService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/services/UserService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/utils/constants/CONSTANTS.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/utils/security/RandomString.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ro/happydevs/intellifin/utils/security/TokenGenerator.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
@@ -82,53 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IntelliSightWorker.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/intellisight/compute/IntelliSightWorker.java">
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-27">
-              <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductPriceService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/ProductPriceService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="43" column="70" lean-forward="false" selection-start-line="43" selection-start-column="70" selection-end-line="43" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transaction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Transaction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductPrice.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/ProductPrice.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="34" column="30" lean-forward="false" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductPriceRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/ProductPriceRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+            <state relative-caret-position="120">
+              <caret line="8" column="59" lean-forward="true" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -150,6 +72,7 @@
       <find>findByEmailAndPassword</find>
       <find>householdSer</find>
       <find>unique</find>
+      <find>swagger</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -171,12 +94,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/dto/StatisticsDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/TransactionRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/ActivityService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/StatisticsEndpoints.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/business/StatisticsService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/ActivityRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/constants/CONSTANTS.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/AccountService.java" />
@@ -193,7 +113,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Account.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Activity.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Category.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/City.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Expense.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/GenericModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/GroceryList.java" />
@@ -220,8 +139,12 @@
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/TransactionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/rest/intellisight/IntelliSightEndpoints.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/ProductPriceRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/ProductPriceService.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/intellisight/compute/IntelliSightWorker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/scrapers/emag/AmSaAruncExceptie.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/scrapers/emag/ExceptiaMea.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/City.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/ProductPriceService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -238,9 +161,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
-    <option name="width" value="800" />
-    <option name="height" value="600" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -302,53 +225,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="intellifin" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="intellifin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="intellifin-be" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="intellifin" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="intellifin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="intellifin-be" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="intellifin" type="462c0819:PsiDirectoryNode" />
-              <item name="repositories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="intellifin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="intellifin-be" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="intellifin" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="intellifin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="intellifin-be" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="intellifin" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="intellisight" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="intellifin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="intellifin-be" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="intellifin" type="462c0819:PsiDirectoryNode" />
-              <item name="services" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="intellifin" type="b2602c69:ProjectViewProjectNode" />
@@ -571,27 +447,43 @@
       <option name="project" value="LOCAL" />
       <updated>1530800350744</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Various changes">
+      <created>1531325636046</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1531325636046</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="800" height="600" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827324" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827324" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28364116" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42125237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969216" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42125237" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2945874" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35488126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16380544" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -603,7 +495,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -633,6 +524,32 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -646,7 +563,8 @@
     <MESSAGE value="Small Refactoring" />
     <MESSAGE value="Updates regarding household and transactions + statistics" />
     <MESSAGE value="Updates regarding various logging and tracking properties + transaction with products" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates regarding various logging and tracking properties + transaction with products" />
+    <MESSAGE value="Various changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Various changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -655,46 +573,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="60" lean-forward="true" selection-start-line="37" selection-start-column="60" selection-end-line="37" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/scrapers/emag/EmagScraper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/utils/constants/CONSTANTS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="34" column="80" lean-forward="true" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/GroceryListItemRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/GroceryListRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -707,14 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/City.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="16" selection-end-column="3" />
           <folding />
         </state>
       </provider>
@@ -755,14 +625,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/HouseholdMember.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -991,14 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Account.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
@@ -1023,6 +877,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mvnw">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-903">
+          <caret line="116" column="4" lean-forward="false" selection-start-line="116" selection-start-column="4" selection-end-line="116" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/ProductService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="23" column="10" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/intellisight/compute/IntelliSightWorker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="63" column="32" lean-forward="true" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/Transaction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -1041,27 +921,65 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/repositories/ProductPriceRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
+        <state relative-caret-position="169">
           <caret line="19" column="52" lean-forward="true" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/City.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/scrapers/emag/ExceptiaMea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/models/business/HouseholdMember.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/ProductPriceService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="43" column="70" lean-forward="false" selection-start-line="43" selection-start-column="70" selection-end-line="43" selection-end-column="70" />
+        <state relative-caret-position="135">
+          <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/intellisight/compute/IntelliSightWorker.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/happydevs/intellifin/services/GroceryListService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27">
-          <caret line="36" column="21" lean-forward="false" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="70" column="20" lean-forward="true" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="59" lean-forward="true" selection-start-line="8" selection-start-column="59" selection-end-line="8" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>

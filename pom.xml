@@ -6,7 +6,8 @@
     <groupId>ro.happydevs</groupId>
     <artifactId>intellifin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+
+    <packaging>pom</packaging>
 
     <name>intellifin</name>
     <description>Demo project for Spring Boot</description>

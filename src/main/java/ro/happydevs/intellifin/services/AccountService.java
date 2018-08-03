@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.*;
 import ro.happydevs.intellifin.models.dto.GenericMessageDTO;
+import ro.happydevs.intellifin.models.dto.business.accounts.CreateAccountDTO;
 import ro.happydevs.intellifin.models.reporting.LogLine;
 import ro.happydevs.intellifin.repositories.AccountRepository;
 import ro.happydevs.intellifin.repositories.HouseholdMemberRepository;
@@ -14,6 +15,7 @@ import ro.happydevs.intellifin.repositories.TokenRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,13 +47,25 @@ public class AccountService {
      * Creates an account for a user based on a token
      * received from front-end
      *
-     * @param account
+     * @param createAccountDTO
      * @param token
      * @return boolean
      */
-    public boolean createAccount(Account account, String token) {
+    public boolean createAccount(CreateAccountDTO createAccountDTO, String token) {
         User u = tokenService.getUserByToken(token);
 
+        Account account = new Account();
+        account.setDeleted(false);
+        account.setCreditCard(createAccountDTO.isCreditCard());
+        account.setCreatedAt(new Date());
+        account.setCreditCardLimit(createAccountDTO.getCreditCardLimit());
+        account.setCurrency(createAccountDTO.getAccountCurrency());
+        account.setDescription(createAccountDTO.getAccountDescription());
+        account.setName(createAccountDTO.getAccountName());
+        account.setIban(createAccountDTO.getIban());
+        account.setSharedWithHousehold(createAccountDTO.isShareWithHousehold());
+        account.setSold(createAccountDTO.getInitialSold());
+        account.setType(createAccountDTO.getType());
         account.setUserId(u.getId());
 
         account =   accountRepository.save(account);
@@ -92,10 +106,12 @@ public class AccountService {
         //own accounts
         listOfAccounts.addAll( accountRepository.findAllAccountsForUser(u.getId()));
 
-        for(Household household : householdService.getOwnHousehold(token)){
-            for(HouseholdMember householdMember : householdMemberRepository.findHouseholdMembersForHouseholdId(household.getId())){
-                for(Account account : getOwnAccountsForUser(householdMember.getId())){
-                    if(account.isSharedWithHousehold()){
+        //check if the user has any household associated
+        if(householdService.getOwnHousehold(token) != null)
+            for(Household household : householdService.getOwnHousehold(token)){
+                for(HouseholdMember householdMember : householdMemberRepository.findHouseholdMembersForHouseholdId(household.getId())){
+                    for(Account account : getOwnAccountsForUser(householdMember.getId())){
+                        if(account.isSharedWithHousehold()){
                         //prefix the household shared accounts
                         account.setName("[" + householdService.householdRepository.findById(account.getSharedHouseholdId()).get().getName() + "] " + account.getName());
                         listOfAccounts.add(account);

@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.happydevs.intellifin.models.business.User;
-import ro.happydevs.intellifin.models.dto.UserLoginDTO;
+import ro.happydevs.intellifin.models.dto.security.UserLoginDTO;
 import ro.happydevs.intellifin.services.TokenService;
 import ro.happydevs.intellifin.services.UserService;
 

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.happydevs.intellifin.models.business.Account;
+import ro.happydevs.intellifin.models.dto.business.accounts.CreateAccountDTO;
 import ro.happydevs.intellifin.services.AccountService;
 import ro.happydevs.intellifin.services.TokenService;
 
@@ -26,12 +27,12 @@ public class AccountEndpoints {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ApiOperation("Create a new account")
-    public ResponseEntity<?> createAccount(@RequestBody Account account,
+    public ResponseEntity<?> createAccount(@RequestBody CreateAccountDTO createAccountDTO,
                                            @RequestHeader("Authentication") String token) {
         if (tokenService.verifyToken(token)) {
 
-            accountService.createAccount(account, token);
-            return ResponseEntity.ok(account);
+            accountService.createAccount(createAccountDTO, token);
+            return ResponseEntity.ok(createAccountDTO);
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 

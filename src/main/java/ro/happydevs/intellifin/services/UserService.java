@@ -49,12 +49,16 @@ public class UserService {
      * @return boolean
      */
     public boolean registerUser(User user) {
-        user = userRepository.save(user);
+        User u = getUserForEmail(user.getEmail());
+        if(getUserForEmail(user.getEmail())!=null) {
+            user = userRepository.save(user);
 
         notificationService.createNotificationForNewUser(user.getId());
 
 
         return true;
+        }
+        return false;
     }
 
     /**

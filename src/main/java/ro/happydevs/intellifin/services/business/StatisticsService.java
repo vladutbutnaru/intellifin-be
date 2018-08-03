@@ -3,7 +3,7 @@ package ro.happydevs.intellifin.services.business;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.Transaction;
-import ro.happydevs.intellifin.models.dto.StatisticsDTO;
+import ro.happydevs.intellifin.models.dto.dashboard.StatisticsDTO;
 import ro.happydevs.intellifin.services.*;
 
 import java.util.List;

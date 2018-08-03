@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.models.dto;
+package ro.happydevs.intellifin.models.dto.dashboard;
 
 import ro.happydevs.intellifin.models.business.Activity;
 import ro.happydevs.intellifin.models.business.Transaction;

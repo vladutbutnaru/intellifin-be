@@ -1,4 +1,4 @@
-package ro.happydevs.intellifin.models.dto;
+package ro.happydevs.intellifin.models.dto.security;
 
 public class UserLoginDTO {
 

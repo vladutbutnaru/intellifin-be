@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @SpringBootApplication
-@EntityScan(basePackages = {"ro.happydevs.intellifin.models"})
+@EntityScan(basePackages = {"ro.happydevs.intellifin.models.*"})
 @EnableJpaRepositories(basePackages = {"ro.happydevs.intellifin.repositories"})
 @EnableTransactionManagement
 @EnableScheduling

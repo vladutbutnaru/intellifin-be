@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <name>intellifin</name>
-    <description>Demo project for Spring Boot</description>
+    <description>IntelliFin Backend Project</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

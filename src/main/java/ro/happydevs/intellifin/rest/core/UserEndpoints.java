@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.happydevs.intellifin.models.business.User;
+import ro.happydevs.intellifin.models.dto.business.user.UserConfirmationDTO;
 import ro.happydevs.intellifin.models.dto.security.UserLoginDTO;
 import ro.happydevs.intellifin.services.TokenService;
 import ro.happydevs.intellifin.services.UserService;
@@ -77,6 +78,20 @@ public class UserEndpoints {
 
 
             return ResponseEntity.ok(userService.getUserForEmail(email));
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
+
+
+    }
+
+
+    @RequestMapping(value = "/account/configure", method = RequestMethod.POST)
+    public ResponseEntity<?> confirmAccountConfiguration(@RequestHeader("Authentication") String token,
+                                            @RequestBody UserConfirmationDTO userConfirmationDTO) {
+        if (tokenService.verifyToken(token)) {
+
+            userService.confirmInitialConfig(token,userConfirmationDTO);
+            return ResponseEntity.ok("Cool");
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 

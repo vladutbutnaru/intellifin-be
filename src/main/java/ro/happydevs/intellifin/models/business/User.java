@@ -45,12 +45,121 @@ public class User {
     //see CONSTANTS for type descriptions
     private int subscriptionType;
     private Timestamp lastLogin;
+    private Date subscriptionExpiry;
     private int age;
     //see CONSTANTS for gender descriptions
     private int gender;
     private String phoneNumber;
     private Date birthDate;
+    private boolean paidForSubscription = false;
+    private String firstName;
+    private String lastName;
+    private int numberOfCigarettesDaily;
+    private double salary;
+    private double weight;
+    private double height;
+    private boolean employed;
+    private String employerName;
+    private boolean studies;
+    private String facultyName;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getNumberOfCigarettesDaily() {
+        return numberOfCigarettesDaily;
+    }
+
+    public void setNumberOfCigarettesDaily(int numberOfCigarettesDaily) {
+        this.numberOfCigarettesDaily = numberOfCigarettesDaily;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public boolean isEmployed() {
+        return employed;
+    }
+
+    public void setEmployed(boolean employed) {
+        this.employed = employed;
+    }
+
+    public String getEmployerName() {
+        return employerName;
+    }
+
+    public void setEmployerName(String employerName) {
+        this.employerName = employerName;
+    }
+
+    public boolean isStudies() {
+        return studies;
+    }
+
+    public void setStudies(boolean studies) {
+        this.studies = studies;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
+    }
+
+    public boolean isPaidForSubscription() {
+        return paidForSubscription;
+    }
+
+    public void setPaidForSubscription(boolean paidForSubscription) {
+        this.paidForSubscription = paidForSubscription;
+    }
+
+    private boolean accountConfigured = false;
+
+    public boolean isAccountConfigured() {
+        return accountConfigured;
+    }
+
+    public void setAccountConfigured(boolean accountConfigured) {
+        this.accountConfigured = accountConfigured;
+    }
 
     //transient
     @Transient
@@ -223,5 +332,12 @@ public class User {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+    public Date getSubscriptionExpiry() {
+        return subscriptionExpiry;
+    }
+
+    public void setSubscriptionExpiry(Date subscriptionExpiry) {
+        this.subscriptionExpiry = subscriptionExpiry;
     }
 }

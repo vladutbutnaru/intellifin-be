@@ -13,6 +13,7 @@ import ro.happydevs.intellifin.repositories.UserRepository;
 import ro.happydevs.intellifin.utils.constants.CONSTANTS;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -51,8 +52,10 @@ public class NotificationService {
         Notification notification = new Notification();
         notification.setUserId(userId);
         notification.setViewed(false);
-        notification.setText("Completeaza-ti contul cu informatiile complete pentru sistemul <strong>IntelliFin</strong>.");
-        notification.setIcon("settings-notification.png");
+        notification.setText("Adauga un cont pe platforma IntelliFin");
+        notification.setIcon("categories/preferences-system-network.png");
+        notification.setCreatedAt(new Date());
+        notification.setLink("i-account-management.html");
 
         createNotificationForUser(notification);
 

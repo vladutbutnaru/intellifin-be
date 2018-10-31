@@ -12,4 +12,20 @@ package ro.happydevs.intellifin.models.business;
 
 //TODO: TO BE DEVELOPED
 public class Category {
+
+    public String nume;
+    public int id;
+    public String prenume;
+
+
+    @Override
+    public int hashCode() {
+
+        return id;
+
+    }
+
+
+
+
 }

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ro.happydevs.intellifin.models.business.Account;
 import ro.happydevs.intellifin.models.business.Transaction;
 import ro.happydevs.intellifin.models.dto.GenericMessageDTO;
 import ro.happydevs.intellifin.models.nonpersistent.TransactionWithProducts;
@@ -70,6 +69,7 @@ public class TransactionEndpoints {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
     }
+
 
     @RequestMapping(value = "/transaction/list/account", method = RequestMethod.GET)
     public ResponseEntity<?> listAllTransactionsForAccount(

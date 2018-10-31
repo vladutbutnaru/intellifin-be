@@ -35,6 +35,7 @@ public class Account {
     private double sold;
 
     private int type;
+
     private String description;
     private String iban;
     private boolean isCreditCard;
@@ -177,4 +178,6 @@ public class Account {
                 ", sharedHouseholdId=" + sharedHouseholdId +
                 '}';
     }
+
+
 }

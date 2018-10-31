@@ -18,6 +18,7 @@ import java.util.Date;
 @Table(name = "intelli_activity")
 public class Activity {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,11 +36,13 @@ public class Activity {
     private String title;
     private String description;
 
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
+
         this.id = id;
     }
 

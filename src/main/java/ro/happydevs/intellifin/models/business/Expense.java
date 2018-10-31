@@ -199,4 +199,27 @@ public class Expense {
     }
 
 
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "id=" + id +
+                ", createdAt=" + createdAt +
+                ", deleted=" + deleted +
+                ", amount=" + amount +
+                ", currency=" + currency +
+                ", userId=" + userId +
+                ", accountId=" + accountId +
+                ", recurring=" + recurring +
+                ", recurringDays=" + recurringDays +
+                ", tag='" + tag + '\'' +
+                ", type=" + type +
+                ", shopId=" + shopId +
+                ", products=" + products +
+                ", toOwnAccount=" + toOwnAccount +
+                ", toCredit=" + toCredit +
+                ", toAccountId=" + toAccountId +
+                ", toIntelliFinUser=" + toIntelliFinUser +
+                ", ibanIntelliFinUser='" + ibanIntelliFinUser + '\'' +
+                '}';
+    }
 }

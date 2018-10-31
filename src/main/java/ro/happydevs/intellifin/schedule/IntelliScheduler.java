@@ -23,9 +23,9 @@ public class IntelliScheduler {
     @Autowired
     TokenService tokenService;
 
+
     @Autowired
     TokenRepository tokenRepository;
-
 
     //scheduler that expires tokens after the lifespan is over and decreases the lifespan
     @Scheduled(fixedRate = 1000)
@@ -47,4 +47,6 @@ public class IntelliScheduler {
         }
 
     }
+
+
 }

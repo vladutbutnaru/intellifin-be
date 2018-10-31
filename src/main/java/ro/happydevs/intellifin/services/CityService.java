@@ -4,7 +4,9 @@ package ro.happydevs.intellifin.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.City;
+import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.repositories.CityRepository;
+import ro.happydevs.intellifin.repositories.UserRepository;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
 import java.io.BufferedReader;
@@ -21,7 +23,13 @@ public class CityService {
     @Autowired
     IntelliLogger intelliLogger;
 
+    @Autowired
+    UserRepository userRepository;
+
+
     public List<City> getAll() {
+        List<User> users = userRepository.findAll();
+
         return cityRepository.findAll();
 
 

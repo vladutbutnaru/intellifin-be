@@ -22,6 +22,7 @@ public class CityEndpoints {
     @RequestMapping(value = "/import", method = RequestMethod.GET)
     public ResponseEntity<?> importCities(@RequestParam(value = "path") String path) {
 
+
         cityService.importCities(path);
         return ResponseEntity.ok("Import done");
     }

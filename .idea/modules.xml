@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/intellifin.iml" filepath="$PROJECT_DIR$/intellifin.iml" />
-      <module fileurl="file://$PROJECT_DIR$/microservice1.iml" filepath="$PROJECT_DIR$/microservice1.iml" />
     </modules>
   </component>
 </project>

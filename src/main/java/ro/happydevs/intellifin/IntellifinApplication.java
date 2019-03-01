@@ -23,6 +23,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableScheduling
 public class IntellifinApplication {
 
+
     public static void main(String[] args) {
         SpringApplication.run(IntellifinApplication.class, args);
     }

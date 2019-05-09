@@ -2,18 +2,16 @@ package ro.happydevs.intellifin.intellisight.compute;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ro.happydevs.intellifin.models.business.City;
 import ro.happydevs.intellifin.models.business.ProductPrice;
 import ro.happydevs.intellifin.services.ProductPriceService;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 1
- @Title: IntelliSight technology worker
- @Description: A class that provides multiple statistics related functions to produce KPIs
- @Links: none
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 1
+ * @Title: IntelliSight technology worker
+ * @Description: A class that provides multiple statistics related functions to produce KPIs
+ * @Links: none
  */
 
 @Component
@@ -21,6 +19,7 @@ public class IntelliSightWorker {
 
     @Autowired
     ProductPriceService productPriceService;
+
     /**
      * Calculates and returns the total amount spent by
      * all IntelliFin users on a specific product
@@ -29,9 +28,9 @@ public class IntelliSightWorker {
      * @return amount
      */
 
-    public double computeTransactionsForSingleProduct(Long productId){
+    public double computeTransactionsForSingleProduct(Long productId) {
         double total = 0;
-        for(ProductPrice productPrice : productPriceService.findProductPricesForProductId(productId)){
+        for (ProductPrice productPrice : productPriceService.findProductPricesForProductId(productId)) {
             total += productPrice.getPrice();
         }
         return total;

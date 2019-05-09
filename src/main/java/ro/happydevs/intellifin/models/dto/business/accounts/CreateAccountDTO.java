@@ -1,13 +1,12 @@
 package ro.happydevs.intellifin.models.dto.business.accounts;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 1
- @Title: DTO for creating an account in IntelliFin
- @Description: none
- @Links: none
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 1
+ * @Title: DTO for creating an account in IntelliFin
+ * @Description: none
+ * @Links: none
  */
 public class CreateAccountDTO {
 

@@ -13,7 +13,6 @@ import ro.happydevs.intellifin.services.AccountService;
 import ro.happydevs.intellifin.services.TokenService;
 
 
-
 @RestController
 @CrossOrigin(value = "*")
 @RequestMapping(value = "/rest/accounts")
@@ -75,9 +74,9 @@ public class AccountEndpoints {
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     @ApiOperation("Delete a User's account and the corresponding transactions")
     public ResponseEntity<?> deleteAccount(@RequestHeader("Authentication") String token,
-                                        @RequestParam(value = "id") Long id) {
+                                           @RequestParam(value = "id") Long id) {
         if (tokenService.verifyToken(token)) {
-            return ResponseEntity.ok(accountService.deleteAccount(id,token));
+            return ResponseEntity.ok(accountService.deleteAccount(id, token));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
     }

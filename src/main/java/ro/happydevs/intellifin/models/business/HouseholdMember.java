@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 1
- @Title: Household Member Entity Bean
- @Description: Representation of a single member in a household
- @Links: User, Household
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 1
+ * @Title: Household Member Entity Bean
+ * @Description: Representation of a single member in a household
+ * @Links: User, Household
  */
 @Entity
 @Table(name = "intelli_household_member")

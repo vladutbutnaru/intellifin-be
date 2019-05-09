@@ -8,13 +8,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 9
- @Title: User Entity Bean
- @Description: Representation of an User inside IntelliFin Platform
- @Links: City
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 9
+ * @Title: User Entity Bean
+ * @Description: Representation of an User inside IntelliFin Platform
+ * @Links: City
  */
 
 @Entity
@@ -62,6 +61,10 @@ public class User {
     private String employerName;
     private boolean studies;
     private String facultyName;
+    private boolean accountConfigured = false;
+    //transient
+    @Transient
+    private ArrayList<Account> accounts;
 
     public String getFirstName() {
         return firstName;
@@ -151,8 +154,6 @@ public class User {
         this.paidForSubscription = paidForSubscription;
     }
 
-    private boolean accountConfigured = false;
-
     public boolean isAccountConfigured() {
         return accountConfigured;
     }
@@ -160,11 +161,6 @@ public class User {
     public void setAccountConfigured(boolean accountConfigured) {
         this.accountConfigured = accountConfigured;
     }
-
-    //transient
-    @Transient
-    private ArrayList<Account> accounts;
-
 
     public String getEmail() {
         return email;
@@ -333,6 +329,7 @@ public class User {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
     public Date getSubscriptionExpiry() {
         return subscriptionExpiry;
     }

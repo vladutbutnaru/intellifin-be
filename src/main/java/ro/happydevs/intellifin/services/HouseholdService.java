@@ -134,7 +134,6 @@ public class HouseholdService {
     }
 
 
-
     public List<User> getAllMembersOfHouseHold(Long houseHoldId, String token) {
 
         //get user by token
@@ -144,7 +143,7 @@ public class HouseholdService {
 
         List<HouseholdMember> listOfHouseholdMembers = householdMemberRepository.findHouseholdMembersForHouseholdId(houseHoldId);
         List<User> listOfHouseholdUsers = new ArrayList<>();
-        for(HouseholdMember member : listOfHouseholdMembers){
+        for (HouseholdMember member : listOfHouseholdMembers) {
             listOfHouseholdUsers.add(userRepository.findById(member.getUserId()).get());
         }
         return listOfHouseholdUsers;

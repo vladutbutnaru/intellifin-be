@@ -7,13 +7,12 @@ import java.util.Date;
 
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 1
- @Title: City Entity Bean
- @Description: Representation of a real world City
- @Links: none
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 1
+ * @Title: City Entity Bean
+ * @Description: Representation of a real world City
+ * @Links: none
  */
 
 @Entity
@@ -31,6 +30,22 @@ public class City {
     private boolean deleted;
 
     private String name;
+
+    public City() {
+
+    }
+
+    public City(String name) {
+        this();
+        System.out.println(name);
+
+    }
+
+    public City(String name, boolean deleted) {
+        this(name);
+        if (deleted)
+            System.out.println("sters");
+    }
 
     public String getName() {
         return name;
@@ -62,21 +77,6 @@ public class City {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
-    }
-
-    public City(){
-
-    }
-    public City(String name){
-        this();
-        System.out.println(name);
-
-    }
-
-    public City(String name, boolean deleted){
-        this(name);
-        if(deleted)
-            System.out.println("sters");
     }
 
 }

@@ -56,13 +56,13 @@ public class UserService {
 
         User u = getUserForEmail(user.getEmail());
 
-        if(getUserForEmail(user.getEmail())==null) {
+        if (getUserForEmail(user.getEmail()) == null) {
             user = userRepository.save(user);
 
-        notificationService.createNotificationForNewUser(user.getId());
+            notificationService.createNotificationForNewUser(user.getId());
 
 
-        return true;
+            return true;
         }
         return false;
     }
@@ -98,9 +98,8 @@ public class UserService {
      *
      * @param token
      * @param userConfirmationDTO
-     *
      */
-    public void confirmInitialConfig(String token, UserConfirmationDTO userConfirmationDTO){
+    public void confirmInitialConfig(String token, UserConfirmationDTO userConfirmationDTO) {
         User user = getUserForToken(token);
         user.setSmoker(userConfirmationDTO.isSmoker());
         user.setPhoneNumber(userConfirmationDTO.getPhoneNumber());
@@ -118,15 +117,11 @@ public class UserService {
         user.setPaidForSubscription(false);
         user.setAccountConfigured(true);
         user.setCreatedAt(new Date());
-        if(userConfirmationDTO.getSubscriptionType() != 1)
+        if (userConfirmationDTO.getSubscriptionType() != 1)
             user.setPaidForSubscription(true);
 
 
         userRepository.save(user);
-
-
-
-
 
 
     }

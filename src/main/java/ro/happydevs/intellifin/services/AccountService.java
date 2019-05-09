@@ -43,6 +43,7 @@ public class AccountService {
 
     @Autowired
     TransactionService transactionService;
+
     /**
      * Creates an account for a user based on a token
      * received from front-end
@@ -68,29 +69,29 @@ public class AccountService {
         account.setType(createAccountDTO.getType());
         account.setUserId(u.getId());
 
-        account =   accountRepository.save(account);
+        account = accountRepository.save(account);
 
-        intelliLogger.createAccountLog(account.getName(),u.getId(), account.getId());
+        intelliLogger.createAccountLog(account.getName(), u.getId(), account.getId());
 
         return true;
 
     }
 
 
-
-    public List<Account> getOwnAccountsForUser(String token){
+    public List<Account> getOwnAccountsForUser(String token) {
         User u = tokenService.getUserByToken(token);
 
-        intelliLogger.createLog(new LogLine(u.getId(),"LIST_OWN_ACCOUNTS"));
+        intelliLogger.createLog(new LogLine(u.getId(), "LIST_OWN_ACCOUNTS"));
         return accountRepository.findAllAccountsForUser(u.getId());
 
     }
 
-    public List<Account> getOwnAccountsForUser(Long userId){
-        intelliLogger.createLog(new LogLine(userId,"LIST_OWN_ACCOUNTS"));
+    public List<Account> getOwnAccountsForUser(Long userId) {
+        intelliLogger.createLog(new LogLine(userId, "LIST_OWN_ACCOUNTS"));
         return accountRepository.findAllAccountsForUser(userId);
 
     }
+
     /**
      * List all accounts for a given user including the ones shared within household
      *
@@ -104,22 +105,22 @@ public class AccountService {
         List<Account> listOfAccounts = new ArrayList<>();
 
         //own accounts
-        listOfAccounts.addAll( accountRepository.findAllAccountsForUser(u.getId()));
+        listOfAccounts.addAll(accountRepository.findAllAccountsForUser(u.getId()));
 
         //check if the user has any household associated
-        if(householdService.getOwnHousehold(token) != null)
-            for(Household household : householdService.getOwnHousehold(token)){
-                for(HouseholdMember householdMember : householdMemberRepository.findHouseholdMembersForHouseholdId(household.getId())){
-                    for(Account account : getOwnAccountsForUser(householdMember.getId())){
-                        if(account.isSharedWithHousehold()){
-                        //prefix the household shared accounts
-                        account.setName("[" + householdService.householdRepository.findById(account.getSharedHouseholdId()).get().getName() + "] " + account.getName());
-                        listOfAccounts.add(account);
+        if (householdService.getOwnHousehold(token) != null)
+            for (Household household : householdService.getOwnHousehold(token)) {
+                for (HouseholdMember householdMember : householdMemberRepository.findHouseholdMembersForHouseholdId(household.getId())) {
+                    for (Account account : getOwnAccountsForUser(householdMember.getId())) {
+                        if (account.isSharedWithHousehold()) {
+                            //prefix the household shared accounts
+                            account.setName("[" + householdService.householdRepository.findById(account.getSharedHouseholdId()).get().getName() + "] " + account.getName());
+                            listOfAccounts.add(account);
+                        }
                     }
                 }
             }
-        }
-        intelliLogger.createLog(new LogLine(u.getId(),"LIST_ALL_ACCOUNTS"));
+        intelliLogger.createLog(new LogLine(u.getId(), "LIST_ALL_ACCOUNTS"));
 
         return listOfAccounts;
 
@@ -136,6 +137,7 @@ public class AccountService {
         return accountRepository.findById(accountId).get();
 
     }
+
     /**
      * Updates account information by account ID
      *
@@ -143,12 +145,13 @@ public class AccountService {
      * @param token
      * @return nothing
      */
-    public void updateAccount(Account account, String token){
-        intelliLogger.updateAccountLog(account.getName(),tokenService.getUserByToken(token).getId(),account.getId());
+    public void updateAccount(Account account, String token) {
+        intelliLogger.updateAccountLog(account.getName(), tokenService.getUserByToken(token).getId(), account.getId());
 
         accountRepository.save(account);
 
     }
+
     /**
      * Marks an account as deleted by account ID
      * Marks all transactions for the respective account as deleted
@@ -157,20 +160,20 @@ public class AccountService {
      * @param token
      * @return GenericMessageDTO
      */
-    public GenericMessageDTO deleteAccount(Long accountId, String token){
-        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(),"[ACCOUNT DELETE] - " + accountId));
+    public GenericMessageDTO deleteAccount(Long accountId, String token) {
+        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(), "[ACCOUNT DELETE] - " + accountId));
 
         Account accountToDelete = accountRepository.findById(accountId).get();
         accountToDelete.setDeleted(true);
         accountRepository.save(accountToDelete);
 
         List<Transaction> transactionsForTheAccount = transactionService.findAllTransactionsForAccountId(accountToDelete.getId());
-        for(Transaction t : transactionsForTheAccount){
+        for (Transaction t : transactionsForTheAccount) {
 
             transactionService.deleteTransaction(t);
         }
-        intelliLogger.deleteAccountLog(accountToDelete.getName(),tokenService.getUserByToken(token).getId());
-        return new GenericMessageDTO(1,"Account and transactions deleted successfully!",true);
+        intelliLogger.deleteAccountLog(accountToDelete.getName(), tokenService.getUserByToken(token).getId());
+        return new GenericMessageDTO(1, "Account and transactions deleted successfully!", true);
 
 
     }

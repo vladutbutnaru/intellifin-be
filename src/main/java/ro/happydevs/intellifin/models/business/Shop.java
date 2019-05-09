@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 1
- @Title: Shop Entity Bean
- @Description: Representation of a real world shop
- @Links: none
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 1
+ * @Title: Shop Entity Bean
+ * @Description: Representation of a real world shop
+ * @Links: none
  */
 
 @Entity

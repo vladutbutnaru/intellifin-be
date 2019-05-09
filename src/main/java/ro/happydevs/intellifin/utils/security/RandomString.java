@@ -9,13 +9,12 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- @Author: Andrew Palleri
- @Version: 16.3
- @Revision: 9
- @Title: EXTERNAL
- @Description: Provides automatic generation of random strings to assist Token creation
- @Links: none
-
+ * @Author: Andrew Palleri
+ * @Version: 16.3
+ * @Revision: 9
+ * @Title: EXTERNAL
+ * @Description: Provides automatic generation of random strings to assist Token creation
+ * @Links: none
  */
 
 

@@ -27,7 +27,7 @@ public class StatisticsService {
     @Autowired
     ActivityService activityService;
 
-    public StatisticsDTO getUserStatisticsDashboard(String token){
+    public StatisticsDTO getUserStatisticsDashboard(String token) {
 
         StatisticsDTO statisticsDTO = new StatisticsDTO();
 
@@ -38,8 +38,8 @@ public class StatisticsService {
         statisticsDTO.setTodayEarnings(0);
         statisticsDTO.setTodaySpendings(0);
 
-        for(Transaction t : todayTransactions){
-            if(t.isEarning())
+        for (Transaction t : todayTransactions) {
+            if (t.isEarning())
                 statisticsDTO.setTodayEarnings(statisticsDTO.getTodayEarnings() + t.getAmount());
             else
                 statisticsDTO.setTodaySpendings(statisticsDTO.getTodaySpendings() + t.getAmount());
@@ -53,8 +53,8 @@ public class StatisticsService {
         statisticsDTO.setMonthEarnings(0);
         statisticsDTO.setMonthSpendings(0);
 
-        for(Transaction t : todayTransactions){
-            if(t.isEarning())
+        for (Transaction t : todayTransactions) {
+            if (t.isEarning())
                 statisticsDTO.setMonthEarnings(statisticsDTO.getMonthEarnings() + t.getAmount());
             else
                 statisticsDTO.setMonthSpendings(statisticsDTO.getMonthSpendings() + t.getAmount());
@@ -67,7 +67,6 @@ public class StatisticsService {
 
         //get latest activity for user
         statisticsDTO.setLatestActivity(activityService.getUserActivity(token));
-
 
 
         //return the statistics object

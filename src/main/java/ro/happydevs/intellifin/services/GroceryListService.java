@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.GroceryList;
 import ro.happydevs.intellifin.models.business.GroceryListItem;
 import ro.happydevs.intellifin.models.business.User;
-import ro.happydevs.intellifin.models.security.Token;
 import ro.happydevs.intellifin.repositories.GroceryListItemRepository;
 import ro.happydevs.intellifin.repositories.GroceryListRepository;
 
@@ -29,8 +28,8 @@ public class GroceryListService {
     TokenService tokenService;
 
 
-    public List<GroceryList> getUserGroceryLists(String token){
-        User loggedInUser  = tokenService.getUserByToken(token);
+    public List<GroceryList> getUserGroceryLists(String token) {
+        User loggedInUser = tokenService.getUserByToken(token);
 
         //get own grocery lists
         return groceryListRepository.getGroceryListsForUser(loggedInUser.getId());
@@ -38,11 +37,10 @@ public class GroceryListService {
     }
 
 
-    public List<GroceryListItem> getGroceryListItemsForListId(Long listId){
+    public List<GroceryListItem> getGroceryListItemsForListId(Long listId) {
         return groceryListItemRepository.getItemsForGroceryList(listId);
 
     }
-
 
 
 }

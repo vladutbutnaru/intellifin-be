@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 1
- @Title: Product Entity Bean
- @Description: Representation of a generic product inside IntelliFin
- @Links: none
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 1
+ * @Title: Product Entity Bean
+ * @Description: Representation of a generic product inside IntelliFin
+ * @Links: none
  */
 
 @Entity

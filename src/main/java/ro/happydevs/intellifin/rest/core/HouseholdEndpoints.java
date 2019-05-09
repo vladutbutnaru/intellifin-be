@@ -89,7 +89,7 @@ public class HouseholdEndpoints {
     ) {
 
         if (tokenService.verifyToken(token)) {
-            return ResponseEntity.ok(householdService.getAllMembersOfHouseHold(householdId,token));
+            return ResponseEntity.ok(householdService.getAllMembersOfHouseHold(householdId, token));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
     }

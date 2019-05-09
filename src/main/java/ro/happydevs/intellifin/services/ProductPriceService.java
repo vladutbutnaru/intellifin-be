@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.ProductPrice;
 import ro.happydevs.intellifin.repositories.ProductPriceRepository;
-import ro.happydevs.intellifin.scrapers.emag.ExceptiaMea;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
 
-import javax.validation.constraints.Null;
 import java.util.List;
 
 @Service
@@ -20,7 +18,6 @@ public class ProductPriceService {
     ProductPriceRepository productPriceRepository;
     @Autowired
     IntelliLogger intelliLogger;
-
 
 
     public boolean create(ProductPrice productPrice) {
@@ -40,16 +37,14 @@ public class ProductPriceService {
 
     }
 
-    public List<ProductPrice> findProductPricesForTransactionId(Long transactionId){
+    public List<ProductPrice> findProductPricesForTransactionId(Long transactionId) {
         return productPriceRepository.findProductPricesForTransaction(transactionId);
     }
 
 
-    public List<ProductPrice> findProductPricesForProductId(Long productId){
+    public List<ProductPrice> findProductPricesForProductId(Long productId) {
         return productPriceRepository.findPricesForProduct(productId);
     }
-
-
 
 
 }

@@ -9,7 +9,7 @@ import ro.happydevs.intellifin.models.business.GroceryList;
 import java.util.List;
 
 @Repository
-public interface GroceryListRepository extends JpaRepository<GroceryList,Long> {
+public interface GroceryListRepository extends JpaRepository<GroceryList, Long> {
 
     @Query("select g from GroceryList g where g.userId = :userId")
     List<GroceryList> getGroceryListsForUser(@Param("userId") Long userId);

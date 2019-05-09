@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 3
- @Title: Log Line Entity Bean
- @Description: A class that registers all actions made inside IntelliFin or Third Parties
- @Links: User
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 3
+ * @Title: Log Line Entity Bean
+ * @Description: A class that registers all actions made inside IntelliFin or Third Parties
+ * @Links: User
  */
 
 @Entity
@@ -31,7 +30,7 @@ public class LogLine {
     private Long userId;
 
     @Lob
-    @Column( length = 10000000 )
+    @Column(length = 10000000)
     private String action;
 
 

@@ -15,7 +15,7 @@ public class ScraperEndpoints {
     @RequestMapping(value = "/emag", method = RequestMethod.GET)
     public ResponseEntity<?> getLaptops(@RequestParam(value = "url") String url,
                                         @RequestParam(value = "category") Long categoryId) {
-        emagScraper.scrapeMarket(url, categoryId);
+        EmagScraper.scrapeMarket(url, categoryId);
         return ResponseEntity.ok("Job finished!");
     }
 }

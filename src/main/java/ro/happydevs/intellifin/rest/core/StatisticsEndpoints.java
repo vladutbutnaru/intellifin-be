@@ -22,7 +22,7 @@ public class StatisticsEndpoints {
     @RequestMapping(value = "/dashboard/get", method = RequestMethod.GET)
     @ApiOperation("Get dashboard statistics for a user")
     public ResponseEntity<?> getAccount(@RequestHeader("Authentication") String token
-                                       ) {
+    ) {
         if (tokenService.verifyToken(token)) {
             return ResponseEntity.ok(statisticsService.getUserStatisticsDashboard(token));
         }

@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 2
- @Title: Grocery List Item Entity Bean
- @Description: Representation of a single item in a collection called GroceryList
- @Links: Product, GroceryList
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 2
+ * @Title: Grocery List Item Entity Bean
+ * @Description: Representation of a single item in a collection called GroceryList
+ * @Links: Product, GroceryList
  */
 
 @Entity

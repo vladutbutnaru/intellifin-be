@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 3
- @Title: Product Price Entity Bean
- @Description: Representation of a product price based on a previous purchase
- @Links: Product, Shop
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 3
+ * @Title: Product Price Entity Bean
+ * @Description: Representation of a product price based on a previous purchase
+ * @Links: Product, Shop
  */
 
 @Entity

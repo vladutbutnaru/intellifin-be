@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 3
- @Title: Notification Entity Bean
- @Description: Representation of a notification generated for a single user
- @Links: User
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 3
+ * @Title: Notification Entity Bean
+ * @Description: Representation of a notification generated for a single user
+ * @Links: User
  */
 
 @Entity

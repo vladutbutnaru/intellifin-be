@@ -4,13 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 2
- @Title: Token generation class
- @Description: Provides token generation actions for inside or outside IntelliFin
- @Links: none
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 2
+ * @Title: Token generation class
+ * @Description: Provides token generation actions for inside or outside IntelliFin
+ * @Links: none
  */
 
 public class TokenGenerator {

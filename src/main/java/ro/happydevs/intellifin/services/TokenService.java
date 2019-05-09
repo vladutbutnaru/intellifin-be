@@ -32,7 +32,7 @@ public class TokenService {
     public boolean verifyToken(String code) {
         logger.info("[Verify Token] - Verifying token");
 
-        if(tokenRepository.findByCode(code)!=null){
+        if (tokenRepository.findByCode(code) != null) {
             refreshToken(code);
         }
         return tokenRepository.findByCode(code) != null;
@@ -52,7 +52,7 @@ public class TokenService {
         token.setUserId(userId);
         token.setDeleted(false);
         //24 hours lifespan
-        token.setLifeSpan(60*60*24);
+        token.setLifeSpan(60 * 60 * 24);
 
         tokenRepository.save(token);
         return token.getCode();
@@ -60,14 +60,14 @@ public class TokenService {
 
     }
 
-    public List<Token> getValidTokens(){
+    public List<Token> getValidTokens() {
         return tokenRepository.findValidTokens();
     }
 
-    public void refreshToken(String token){
+    public void refreshToken(String token) {
         Token t = tokenRepository.findByCode(token);
-        if(t!=null){
-            t.setLifeSpan(60*60*24);
+        if (t != null) {
+            t.setLifeSpan(60 * 60 * 24);
             tokenRepository.save(t);
         }
     }

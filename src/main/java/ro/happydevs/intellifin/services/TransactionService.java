@@ -59,11 +59,9 @@ public class TransactionService {
 
         accountRepository.save(account);
 
-        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(),"[CREATED] - " + transaction.getId()));
+        intelliLogger.createLog(new LogLine(tokenService.getUserByToken(token).getId(), "[CREATED] - " + transaction.getId()));
 
         return transactionRepository.save(transaction);
-
-
 
 
     }
@@ -84,59 +82,55 @@ public class TransactionService {
 
     }
 
-    public void deleteTransaction(Transaction t){
+    public void deleteTransaction(Transaction t) {
         t.setDeleted(true);
         transactionRepository.save(t);
 
     }
 
-    public List<Transaction> getTodayTransactions(String token){
+    public List<Transaction> getTodayTransactions(String token) {
         Date today = new Date();
         Date todayMorning = DateUtils.truncate(today, Calendar.DATE);
         Date todayEvening = DateUtils.addSeconds(DateUtils.addMinutes(DateUtils.addHours(todayMorning, 23), 59), 59);
 
         List<Transaction> transactions = new ArrayList<Transaction>();
-        for(Account a : accountService.getAccountsForUser(token)){
-            transactions.addAll(transactionRepository.findAllForAccountBetweenStartEndDates(a.getId(),todayMorning,todayEvening));
+        for (Account a : accountService.getAccountsForUser(token)) {
+            transactions.addAll(transactionRepository.findAllForAccountBetweenStartEndDates(a.getId(), todayMorning, todayEvening));
 
         }
         return transactions;
 
     }
 
-    public List<Transaction> getMonthlyTransactions(String token){
+    public List<Transaction> getMonthlyTransactions(String token) {
         Date firstOfMonth = new Date();
         firstOfMonth.setDate(0);
         Date lastOfMonth;
-        lastOfMonth = (DateUtils.addMonths(firstOfMonth,1));
+        lastOfMonth = (DateUtils.addMonths(firstOfMonth, 1));
 
 
         List<Transaction> transactions = new ArrayList<Transaction>();
-        for(Account a : accountService.getAccountsForUser(token)){
-            transactions.addAll(transactionRepository.findAllForAccountBetweenStartEndDates(a.getId(),firstOfMonth,lastOfMonth));
+        for (Account a : accountService.getAccountsForUser(token)) {
+            transactions.addAll(transactionRepository.findAllForAccountBetweenStartEndDates(a.getId(), firstOfMonth, lastOfMonth));
 
         }
         return transactions;
 
     }
 
-    public GenericMessageDTO createTransactionWithProducts(TransactionWithProducts transactionWithProducts, String token){
-            // create the transaction as regular one
-            Transaction savedTransaction = createRegularTransaction(transactionWithProducts.getTransaction(), token);
+    public GenericMessageDTO createTransactionWithProducts(TransactionWithProducts transactionWithProducts, String token) {
+        // create the transaction as regular one
+        Transaction savedTransaction = createRegularTransaction(transactionWithProducts.getTransaction(), token);
 
-            //save the product prices
-            for(ProductPrice productPrice : transactionWithProducts.getProductPrices()){
-                productPrice.setDeleted(false);
-                productPrice.setTransactionId(savedTransaction.getId());
-                productPriceRepository.save(productPrice);
-            }
+        //save the product prices
+        for (ProductPrice productPrice : transactionWithProducts.getProductPrices()) {
+            productPrice.setDeleted(false);
+            productPrice.setTransactionId(savedTransaction.getId());
+            productPriceRepository.save(productPrice);
+        }
 
-            return new GenericMessageDTO(1,"Transaction with products created succesfully", true);
+        return new GenericMessageDTO(1, "Transaction with products created succesfully", true);
     }
-
-
-
-
 
 
 }

@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ActivityService {
 
-    public List<Activity> getUserActivity(String token){
+    public List<Activity> getUserActivity(String token) {
         List<Activity> activities = new ArrayList<>();
 
         return activities;

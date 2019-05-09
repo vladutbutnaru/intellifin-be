@@ -6,13 +6,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- @Author: Vlad Butnaru
- @Version: 1.0
- @Revision: 24
- @Title: Transaction Entity Bean
- @Description: Representation of a transaction created by a user
- @Links: Account, Shop, User
-
+ * @Author: Vlad Butnaru
+ * @Version: 1.0
+ * @Revision: 24
+ * @Title: Transaction Entity Bean
+ * @Description: Representation of a transaction created by a user
+ * @Links: Account, Shop, User
  */
 
 @Entity

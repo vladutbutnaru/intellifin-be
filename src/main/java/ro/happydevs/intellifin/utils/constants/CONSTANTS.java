@@ -35,9 +35,8 @@ public class CONSTANTS {
     public static final String ACTION_CREATE_TRANSACTION = "CREATE_TRANSACTION";
 
     public static final int SUBSCRIPTION_TYPE_PERSONAL = 1;
-    public static final int SUBSCRIPTION_TYPE_PERSONAL_PLUS=2;
-    public static final int SUBSCRIPTION_TYPE_PERSONAL_CONCIERGE=3;
-
+    public static final int SUBSCRIPTION_TYPE_PERSONAL_PLUS = 2;
+    public static final int SUBSCRIPTION_TYPE_PERSONAL_CONCIERGE = 3;
 
 
 }

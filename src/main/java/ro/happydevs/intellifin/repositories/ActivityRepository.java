@@ -7,7 +7,7 @@ import ro.happydevs.intellifin.models.business.Activity;
 
 import java.util.List;
 
-public interface ActivityRepository  extends JpaRepository<Activity,Long>{
+public interface ActivityRepository extends JpaRepository<Activity, Long> {
     @Query("select a from Activity a where a.userId = :userId")
     List<Activity> getActivitiesForUser(@Param("userId") Long userId);
 }

@@ -32,11 +32,8 @@ public class TransactionEndpoints {
     ) {
 
         if (tokenService.verifyToken(token)) {
-
-                    transactionService.createRegularTransaction(transaction, token);
-                    return ResponseEntity.ok(new GenericMessageDTO(1, "Transaction created!", true));
-
-
+            transactionService.createRegularTransaction(transaction, token);
+            return ResponseEntity.ok(new GenericMessageDTO(1, "Transaction created!", true));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
 
@@ -48,13 +45,10 @@ public class TransactionEndpoints {
             @RequestHeader("Authentication") String token,
             @RequestBody TransactionWithProducts transaction
     ) {
-
         if (tokenService.verifyToken(token)) {
-            return ResponseEntity.ok(transactionService.createTransactionWithProducts(transaction,token));
+            return ResponseEntity.ok(transactionService.createTransactionWithProducts(transaction, token));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized");
-
-
     }
 
 

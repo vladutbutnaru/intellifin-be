@@ -17,12 +17,33 @@ HOUSEHOLD
 
 TRANSACTIONS
 
-    REGULAR TRANSACTION (Spending & Earning)
+    REGULAR TRANSACTION (Spending)
         --> User goes to add regular transaction screen
         --> User selects his account
-        --> User inputs a name and description of the transaction
-        --> User inputs the amount
-        --> User inputs a tag and a category
+        --> [OPTIONAL] User inputs a name and description of the transaction
+        --> User inputs the amount and currency
+        --> [OPTIONAL] User inputs a tag and a category
+        --> [OPTIONAL] User selects a type of transaction:
+            --> Classic (classic transaction with no extra features) - DEFAULT OPTION
+            --> Utility payment (with the option to select an existing or set up an Utility Subscription for the household)
+                --> The utility subscription is created inside a new card displayed with inputs related to the Utility
+                Subscription information.
+                --> If no HouseHold is created for the user, he can create a new one by clicking a link that redirects him
+                to the creation of a new household.
+            --> Debt Rate Payment with the option to select and existing or set up a new Debt Rate Payment Plan.
+                --> Similarly, a new card is displayed with the required input information or the searchable list.
+            --> Meal - Breakfast / Launch / Dinner with the suggestion of previous day's choice of food and restaurant.
+                --> User selects which meal he purchased, along with a searchable list of restaurants and according menu
+                and prices.
+                --> User is able to edit or update the menu and prices of the chosen restaurant or add a new restaurant
+                to the list of available ones.
+            -->
+        --> [OPTIONAL] User inputs the shop where the transaction took place
+        --> [OPTIONAL] User inputs the products from the transaction
+            --> If he chooses to add products, a new card is shown displaying a searchable list of available products
+            --> When he selects a product, the field "quantity", "price / unit" appear prefilled with available prices
+                from that shop and a button "add" that adds it to the product list of the transaction.
+            --> When saving the transaction a new productprice is saved in IntelliFin.
         --> User saves the transaction
         --> The balance of the account is subsided
 

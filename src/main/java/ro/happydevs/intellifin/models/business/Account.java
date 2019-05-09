@@ -11,7 +11,7 @@ import java.util.Date;
  * @Version: 1.0
  * @Revision: 1
  * @Title: Account Entity Bean
- * @Description: Representation of an User's account
+ * @Description: Representation of an User's financial account
  * @Links: User, Currency, Household, CONSTANTS
  */
 
@@ -32,9 +32,7 @@ public class Account {
     private String name;
     private int currency;
     private double sold;
-
     private int type;
-
     private String description;
     private String iban;
     private boolean isCreditCard;

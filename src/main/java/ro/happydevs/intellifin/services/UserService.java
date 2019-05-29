@@ -21,8 +21,6 @@ public class UserService {
     @Autowired
     TokenService tokenService;
     @Autowired
-    NotificationService notificationService;
-    @Autowired
     IntelliLogger intelliLogger;
 
     /**
@@ -59,7 +57,7 @@ public class UserService {
         if (getUserForEmail(user.getEmail()) == null) {
             user = userRepository.save(user);
 
-            notificationService.createNotificationForNewUser(user.getId());
+           // notificationService.createNotificationForNewUser(user.getId());
 
 
             return true;

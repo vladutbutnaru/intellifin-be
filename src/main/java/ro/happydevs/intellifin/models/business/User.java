@@ -62,9 +62,7 @@ public class User {
     private boolean studies;
     private String facultyName;
     private boolean accountConfigured = false;
-    //transient
-    @Transient
-    private ArrayList<Account> accounts;
+   
 
     public String getFirstName() {
         return firstName;
@@ -298,13 +296,7 @@ public class User {
         this.birthDate = birthDate;
     }
 
-    public ArrayList<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(ArrayList<Account> accounts) {
-        this.accounts = accounts;
-    }
+  
 
     public Long getId() {
         return id;

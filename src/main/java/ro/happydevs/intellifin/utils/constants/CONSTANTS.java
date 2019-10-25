@@ -38,5 +38,12 @@ public class CONSTANTS {
     public static final int SUBSCRIPTION_TYPE_PERSONAL_PLUS = 2;
     public static final int SUBSCRIPTION_TYPE_PERSONAL_CONCIERGE = 3;
 
+    //MESSAGES
+    public static final String REGISTRATION_PASSWORD_TOO_SHORT = "Parola trebuie sa contina minim 8 caractere";
+    public static final String REGISTRATION_PASSWORDS_MUST_MATCH = "Parolele trebuie sa coincida";
+    public static final String REGISTRATION_EMAIL_EXISTS = "Adresa de email este deja inregistrata";
+
+
+
 
 }

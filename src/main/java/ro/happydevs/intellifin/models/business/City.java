@@ -30,21 +30,24 @@ public class City {
     private boolean deleted;
 
     private String name;
+    private String county;
+    private double lng;
+    private double lat;
 
-    public City() {
-
+    public double getLng() {
+        return lng;
     }
 
-    public City(String name) {
-        this();
-        System.out.println(name);
-
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
-    public City(String name, boolean deleted) {
-        this(name);
-        if (deleted)
-            System.out.println("sters");
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 
     public String getName() {
@@ -79,4 +82,11 @@ public class City {
         this.deleted = deleted;
     }
 
+    public String getCounty() {
+        return county;
+    }
+
+    public void setCounty(String county) {
+        this.county = county;
+    }
 }

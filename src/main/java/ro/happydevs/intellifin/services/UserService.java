@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.models.dto.business.user.UserConfirmationDTO;
+import ro.happydevs.intellifin.models.dto.business.user.UserRegisterDTO;
 import ro.happydevs.intellifin.models.reporting.LogLine;
 import ro.happydevs.intellifin.repositories.UserRepository;
+import ro.happydevs.intellifin.utils.constants.CONSTANTS;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
+import ro.happydevs.intellifin.utils.validators.PasswordValidator;
 
 import java.util.Date;
 
@@ -49,22 +52,25 @@ public class UserService {
      * Registers a new user and generates a default notification
      * that redirects to user configuration page
      *
-     * @param user
-     * @return boolean
+     * @param userRegisterDTO
+     * @return Registration output message
      */
-    public boolean registerUser(User user) {
-
-        User u = getUserForEmail(user.getEmail());
-
-        if (getUserForEmail(user.getEmail()) == null) {
-            user = userRepository.save(user);
-
-            notificationService.createNotificationForNewUser(user.getId());
-
-
-            return true;
+    public String registerUser(UserRegisterDTO userRegisterDTO) {
+        if (!PasswordValidator.validateRegistrationPassword(userRegisterDTO).equals("OK")) {
+            return PasswordValidator.validateRegistrationPassword(userRegisterDTO);
         }
-        return false;
+        if (getUserForEmail(userRegisterDTO.getEmail()) == null) {
+            User newUser = new User();
+            newUser.setEmail(userRegisterDTO.getEmail());
+            newUser.setPassword(userRegisterDTO.getPassword());
+
+            newUser = userRepository.save(newUser);
+
+            notificationService.createNotificationForNewUser(newUser.getId());
+
+            return "OK";
+        }
+        return CONSTANTS.REGISTRATION_EMAIL_EXISTS;
     }
 
     /**

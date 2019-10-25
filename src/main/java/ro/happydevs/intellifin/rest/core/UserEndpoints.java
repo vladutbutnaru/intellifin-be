@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ro.happydevs.intellifin.models.business.User;
 import ro.happydevs.intellifin.models.dto.business.user.UserConfirmationDTO;
+import ro.happydevs.intellifin.models.dto.business.user.UserRegisterDTO;
 import ro.happydevs.intellifin.models.dto.security.UserLoginDTO;
+import ro.happydevs.intellifin.models.dto.security.UserLoginRequestDTO;
 import ro.happydevs.intellifin.services.TokenService;
 import ro.happydevs.intellifin.services.UserService;
 import ro.happydevs.intellifin.utils.reporting.IntelliLogger;
@@ -31,33 +32,33 @@ public class UserEndpoints {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ApiOperation("Logs in a user based on email and password")
     public ResponseEntity<UserLoginDTO> loginUser(
-            @RequestParam(value = "email") String email,
-            @RequestParam(value = "password") String password
+            @RequestBody UserLoginRequestDTO loginDTO
     ) {
         UserLoginDTO response = new UserLoginDTO();
 
-        response.setToken(userService.loginUser(email, password));
+        response.setToken(userService.loginUser(loginDTO.getEmail(), loginDTO.getPassword()));
         if (response.getToken() != null)
             response.setMessage("OK");
         else
-            response.setMessage("Invalid");
+            response.setMessage("Datele introduse sunt incorecte");
 
-        intelliLogger.createLog(LOG_CLASS + " Login with token: " + response.getToken() + " and message: " + response.getMessage());
+        intelliLogger.createLog(LOG_CLASS + " Login with token: " + response.getToken() + " and output: " + response.getMessage());
+        logger.info(LOG_CLASS + " Login with token: " + response.getToken() + " and output: " + response.getMessage());
         return ResponseEntity.ok(response);
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ApiOperation("Registers a user based on the specific register form params")
     public ResponseEntity<UserLoginDTO> registerUser(
-            @RequestBody User user
+            @RequestBody UserRegisterDTO userRegisterDTO
     ) {
-        UserLoginDTO response = new UserLoginDTO();
-        if (userService.registerUser(user))
-            response.setMessage("OK");
-        else
-            response.setMessage("Email already exists");
 
-        intelliLogger.createLog(LOG_CLASS + " Register with email: " + user.getEmail() + " and message: " + response.getMessage());
+        UserLoginDTO response = new UserLoginDTO();
+        response.setMessage(userService.registerUser(userRegisterDTO));
+
+
+        intelliLogger.createLog(LOG_CLASS + " Register with email: " + userRegisterDTO.getEmail() + " returned: " + response.getMessage());
+        logger.info(LOG_CLASS + " Register with email: " + userRegisterDTO.getEmail() + " returned: " + response.getMessage());
         return ResponseEntity.ok(response);
 
 

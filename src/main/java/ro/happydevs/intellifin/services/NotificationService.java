@@ -52,7 +52,7 @@ public class NotificationService {
         Notification notification = new Notification();
         notification.setUserId(userId);
         notification.setViewed(false);
-        notification.setText("Adauga un cont pe platforma IntelliFin");
+        notification.setText("Completeaza-ti profilul pentru a incepe sa folosesti IntelliFin");
         notification.setIcon("categories/preferences-system-network.png");
         notification.setCreatedAt(new Date());
         notification.setLink("i-account-management.html");
